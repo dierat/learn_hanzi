@@ -10,7 +10,7 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 if (Meteor.isClient) {
   Template.body.helpers({
     characters: function () {
-      return Characters.find({});
+      return Characters.find({}, {limit: 1});
     }
   });
 }
