@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 ul {
 	text-align: center;
-	font-size: 124px;
+	font-size: 150px;
+}
+
+h1 {
+	text-align: center;
 }
