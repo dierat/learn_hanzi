@@ -1,0 +1,22 @@
+<head>
+  <title>Chinese Quiz</title>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Chinese Quiz</h1>
+		</header>
+
+		<ul>
+			{{#each characters}}
+				{{> character}}
+			{{/each}}
+		</ul>
+	</div>
+</body>
+
+<template name="character">
+  <!-- <button>Click Me</button> -->
+  <p>{{character}}</p>
+</template>
