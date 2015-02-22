@@ -1,8 +1,15 @@
 ul {
 	text-align: center;
-	font-size: 50px;
 }
 
 h1 {
 	text-align: center;
+}
+
+.english {
+	font-size: 24px;
+}
+
+.mandarin {
+	font-size: 96px;
 }

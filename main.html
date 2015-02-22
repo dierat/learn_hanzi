@@ -17,12 +17,13 @@
 </body>
 
 <template name="card">
-  <p>{{character}}</p>
+  <p><div class="mandarin">{{character}}</div></p>
   {{#if seen}}
-    <p><input type="text" id="answer-field"></p>
+  	<p><div class="english">Remember this one?</div></p>
+    <p><input type="text" id="answer-field" ></p>
     <button id="answer-button">Submit!</button>
   {{else}}
-    <p>{{meaning}}</p>
+    <p><div class="english">{{meaning}}</div></p>
     <button id="next-button">Got it! Next, please!</button>
   {{/if}}
 </template>
