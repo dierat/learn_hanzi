@@ -18,5 +18,11 @@
 
 <template name="card">
   <p>{{character}}</p>
-  <button>Got it! Next, please!</button>
+  {{#if seen}}
+    <p><input type="text" id="answer-field"></p>
+    <button id="answer-button">Submit!</button>
+  {{else}}
+    <p>{{meaning}}</p>
+    <button id="next-button">Got it! Next, please!</button>
+  {{/if}}
 </template>
