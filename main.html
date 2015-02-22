@@ -9,14 +9,14 @@
 		</header>
 
 		<ul>
-			{{#each characters}}
-				{{> character}}
+			{{#each cards}}
+				{{> card}}
 			{{/each}}
 		</ul>
 	</div>
 </body>
 
-<template name="character">
+<template name="card">
   <p>{{character}}</p>
   <button>Got it! Next, please!</button>
 </template>

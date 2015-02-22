@@ -1,4 +1,4 @@
-Characters = new Mongo.Collection("characters");
+Current_deck = new Mongo.Collection("current_deck");
 
 
 time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
@@ -10,14 +10,14 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 if (Meteor.isClient) {
 
   Template.body.helpers({
-    characters: function () {
-      return Characters.find({}, {sort: {time: 1}, limit: 1});
+    cards: function () {
+      return Current_deck.find({}, {sort: {time: 1}, limit: 1});
     }
   });
 
-  Template.character.events({
+  Template.card.events({
     'click button': function () {
-      Characters.update(this._id, {$set: {time: new Date(new Date() + this.level*1000)}});
+      Current_deck.update(this._id, {$set: {time: new Date(new Date() + this.level*1000)}});
     }
   });
 
@@ -27,13 +27,13 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
 
   Meteor.startup(function () {
-    if (Characters.find().count() === 0) {
+    if (Current_deck.find().count() === 0) {
       var chars = [['一','one'],['亠','lid'],['冖','cover'],['宀','roof'],
       ['立','stand, erect'], ['厂','cliff'], ['广','house on cliff'], 
       ['疒','sickness'], ['穴','cave'], ['人','human, person, people'], ];
 
       _.each(chars, function (char) {
-        Characters.insert({
+        Current_deck.insert({
           character: char[0],
           level: 0,
           meaning: char[1],
