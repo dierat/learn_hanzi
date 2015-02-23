@@ -65,6 +65,7 @@ if (Meteor.isClient) {
 
   Template.card.rendered = function () {
     $('.answer input').focus();
+    $('#next-button').focus();
   }
 
 }
