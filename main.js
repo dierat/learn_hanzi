@@ -34,7 +34,12 @@ if (Meteor.isClient) {
       if (current_card.count() > 0) {
         return current_card;
       } else {
-        return Waiting_deck.find({}, {sort: {time: 1}, limit: 1});
+        var waiting_card = Waiting_deck.find({}, {sort: {time: 1}, limit: 1});
+        if (waiting_card.count() > 0) {
+          return waiting_card;
+        } else {
+          return Current_deck.find({}, {sort: {time: 1}, limit: 1});
+        }
       }
     }
   });
