@@ -20,8 +20,11 @@
   <p><div class="mandarin">{{character}}</div></p>
   {{#if seen}}
   	<p><div class="english">Remember this one?</div></p>
-    <p><input type="text" id="answer-field" ></p>
-    <button id="answer-button">Submit!</button>
+    <p>
+    	<form class="answer">
+			<input type="text" name="text" />
+		</form>
+    </p>
   {{else}}
     <p><div class="english">{{meaning}}</div></p>
     <button id="next-button">Got it! Next, please!</button>
