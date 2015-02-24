@@ -53,14 +53,13 @@ if (Meteor.isClient) {
       Waiting_deck.remove(this._id);
     },
     'submit .answer': function (event) {
+      var answered = true;
       var answer = event.target.text.value;
       if (answer === this.meaning) {
-        console.log("Correct!!");
-        console.log("The current time is: " + new Date())
+        var correct = true;
         Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new Date(+new Date() + (time_levels[this.level] + 1)*1000)}});
       } else {
-        console.log("Nope! It's " + this.meaning);
-        console.log("The current time is: " + new Date())
+        var correct = false;
         Current_deck.update(this._id, {$set: {time: new Date(+new Date() + time_levels[this.level]*1000)}});
         event.target.text.value = '';
       }

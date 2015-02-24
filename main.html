@@ -16,8 +16,12 @@
 	</div>
 </body>
 
+
+
 <template name="card">
+
   <p><div class="mandarin">{{character}}</div></p>
+
   {{#if seen}}
   	<p><div class="english">Remember this one?</div></p>
     <p>
@@ -25,8 +29,19 @@
 			<input type="text" name="text" />
 		</form>
     </p>
+
+    {{#if answered}}
+    	{{#if correct}}
+    		<p>That's correct!</p>
+    	{{else}}
+    		<p>No, that's not right.</p>
+    		<p>The correct answer is {{meaning}}</p>
+    	{{/if}}
+    {{/if}}
+
   {{else}}
     <p><div class="english">{{meaning}}</div></p>
     <button id="next-button">Got it! Next, please!</button>
   {{/if}}
+
 </template>
