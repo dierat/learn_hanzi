@@ -1,1 +1,3 @@
-# chinese_quiz_meteor_2
+Chinese Quiz
+
+A spaced-repetition software for learning Mandarin characters.
