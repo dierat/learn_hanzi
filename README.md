@@ -1,3 +1,3 @@
 #Chinese Quiz
 
-A spaced-repetition app for learning to read Mandarin characters, built with Meteor js.
+A spaced-repetition app for learning to read Chinese characters, built with Meteor js.
