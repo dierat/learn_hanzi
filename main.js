@@ -1,3 +1,6 @@
+// to reset the cards, type Meteor.call('shuffle_deck'); in the bowser console (ctrl+ alt + J)
+
+
 Current_deck = new Mongo.Collection("current_deck");
 Waiting_deck = new Mongo.Collection("waiting_deck");
 
