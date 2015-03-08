@@ -6,10 +6,19 @@ h1 {
 	text-align: center;
 }
 
-.english {
+.character {
+	font-size: 96px;
+}
+
+.meaning {
+	font-size: 30px;
+}
+
+.description {
+	font-size: 18px;
+}
+
+.prompt {
 	font-size: 24px;
 }
 
-.mandarin {
-	font-size: 96px;
-}
