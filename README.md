@@ -1,4 +1,4 @@
-#Learn Hanzi
+#Learn Hanzi!
 
 Learn Hanzi is an app for learning to read Chinese characters, built with Meteor js. 
 
