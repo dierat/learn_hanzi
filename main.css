@@ -22,3 +22,12 @@ h1 {
 	font-size: 24px;
 }
 
+#next-button {
+	font-size: 18px;
+}
+
+.answer input {
+	font-size: 18px;
+	text-align: center;
+}
+
