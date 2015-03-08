@@ -1,3 +1,7 @@
+body {
+	background-color: #FFF6E0;
+}
+
 #card {
 	text-align: center;
 }
@@ -6,22 +10,26 @@ h1 {
 	text-align: center;
 	font-size: 40px;
 	font-family: 'Oleo Script', cursive;
+	color: #93131D;
 }
 
 .character {
 	font-size: 96px;
+	color: #290035;
 }
 
 .meaning {
 	font-size: 36px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
+	color: #290035;
 }
 
 .description {
 	font-size: 24spx;
 	font-family: 'Roboto Slab', serif;
 	padding: 10px 60px 20px 60px;
+	color: #4F0D00;
 }
 
 .prompt {
@@ -34,10 +42,11 @@ h1 {
 	font-size: 18px;
 	font-family: 'Josefin+Sans', sans-serif;
 	font-weight: 700;
-	border-radius: 15px;
+	border-radius: 5px;
 	height: 40px;
 	width: 200px;
-	background-color: lightblue;
+	background-color: #F7FFFF;
+	color: #93131D;
 }
 
 .answer input {
@@ -45,5 +54,7 @@ h1 {
 	text-align: center;
 	font-family: 'Josefin Sans', sans-serif;
 	width: 200px;
+	background-color: #F7FFFF;
+	color: #290035;
 }
 
