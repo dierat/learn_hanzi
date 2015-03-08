@@ -15,14 +15,21 @@ h1 {
 
 .character {
 	font-size: 96px;
-	color: #290035;
+	color: #360047;
+	background-color: #F7FFFF;
+	height: 175px;
+	width: 200px;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 25px;
+	box-shadow: 2px 2px 2px #888888;
 }
 
 .meaning {
 	font-size: 36px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
-	color: #290035;
+	color: #360047;
 }
 
 .description {
@@ -36,6 +43,7 @@ h1 {
 	font-size: 24px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
+	color: #360047;
 }
 
 #next-button {
@@ -55,6 +63,6 @@ h1 {
 	font-family: 'Josefin Sans', sans-serif;
 	width: 200px;
 	background-color: #F7FFFF;
-	color: #290035;
+	color: #360047;
 }
 
