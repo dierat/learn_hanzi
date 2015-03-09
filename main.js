@@ -56,6 +56,18 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.card.helpers({
+    answered: function() {
+      return Session.get('answered');
+    },
+    correct: function() {
+      return Session.get('correct');
+    },
+    disabled: function() {
+      return Session.get('answered');
+    }
+  });
+
   Template.card.events({
     'click #next-button': function () {
       Session.set('date', new Date());
@@ -65,16 +77,20 @@ if (Meteor.isClient) {
       Waiting_deck.remove(this._id);
     },
     'submit .answer': function (event) {
-      var answered = true;
+      Session.set('answered', true);
       var answer = event.target.text.value;
       if (answer === this.meaning) {
-        var correct = true;
-        Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new Date(+new Date() + (time_levels[this.level] + 1)*1000)}});
+        Session.set('correct', true);
+        Meteor.setTimeout(function(){
+          Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new Date(+new Date() + (time_levels[this.level] + 1)*1000)}});
+          Session.set('answered', false);
+        }.bind(this), 2000);
       } else {
-        var correct = false;
+        Session.set('correct', false);
         Current_deck.update(this._id, {$set: {time: new Date(+new Date() + time_levels[this.level]*1000)}});
-        event.target.text.value = '';
+        //event.target.text.value = '';
       }
+      //Session.set('answered', false);
       return false;
     }
   });

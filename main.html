@@ -27,7 +27,7 @@
 
   {{#if seen}}
   	<p><div class="prompt">Remember this one?</div></p>
-    <p><form class="answer"><input type="text" name="text" /></form></p>
+    <p><form class="answer"><input type="text" name="text" autocomplete="off" disabled="{{disabled}}" /></form></p>
 
     {{#if answered}}
     	{{#if correct}}
