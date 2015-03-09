@@ -35,11 +35,13 @@
     	{{else}}
     		<p><div class="prompt">No, that's not right. The correct answer is:</div></p>
     		{{> explanation}}
+        <button id="next-button">Got it! Next, please!</button>
     	{{/if}}
     {{/if}}
 
   {{else}}
     {{> explanation}}
+    <button id="next-button">Got it! Next, please!</button>
   {{/if}}
 
 </template>
@@ -49,5 +51,4 @@
 <template name="explanation">
     <p><div class="meaning">{{meaning}}</div></p>
     <p><div class="description">{{description}}</div></p>
-    <button id="next-button">Got it! Next, please!</button>
 </template>
