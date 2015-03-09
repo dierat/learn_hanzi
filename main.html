@@ -35,13 +35,13 @@
     	{{else}}
     		<p><div class="prompt">No, that's not right. The correct answer is:</div></p>
     		{{> explanation}}
-        <button id="next-button">Got it! Next, please!</button>
+        <button class="next-button" id="wrong-answer">Got it! Next, please!</button>
     	{{/if}}
     {{/if}}
 
   {{else}}
     {{> explanation}}
-    <button id="next-button">Got it! Next, please!</button>
+    <button class="next-button" id="first-time">Got it! Next, please!</button>
   {{/if}}
 
 </template>

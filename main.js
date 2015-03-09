@@ -69,12 +69,16 @@ if (Meteor.isClient) {
   });
 
   Template.card.events({
-    'click #next-button': function () {
+    'click #first-time': function () {
       Session.set('date', new Date());
       this.seen = true;
       this.time = new Date(+new Date() + time_levels[0]*1000);
       Current_deck.insert(this);
       Waiting_deck.remove(this._id);
+    },
+    'click #wrong-answer': function() {
+      Current_deck.update(this._id, {$set: {time: new Date(+new Date() + time_levels[this.level]*1000)}});
+      Session.set('answered', false);
     },
     'submit .answer': function (event) {
       Session.set('answered', true);
@@ -87,7 +91,7 @@ if (Meteor.isClient) {
         }.bind(this), 2000);
       } else {
         Session.set('correct', false);
-        Current_deck.update(this._id, {$set: {time: new Date(+new Date() + time_levels[this.level]*1000)}});
+        
         //event.target.text.value = '';
       }
       //Session.set('answered', false);
