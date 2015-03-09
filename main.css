@@ -19,8 +19,7 @@ h1 {
 	background-color: #F7FFFF;
 	height: 175px;
 	width: 200px;
-	text-align: center;
-	margin: 0 auto;
+	margin: 30px auto;
 	padding-top: 25px;
 	box-shadow: 2px 2px 2px #888888;
 }
@@ -44,6 +43,7 @@ h1 {
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
 	color: #360047;
+	padding: 20px;
 }
 
 #next-button {
