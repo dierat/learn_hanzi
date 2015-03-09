@@ -31,9 +31,9 @@
 
     {{#if answered}}
     	{{#if correct}}
-    		<p>That's correct!</p>
+    		<p><div class="prompt">That's correct!</div></p>
     	{{else}}
-    		<p>No, that's not right. The correct answer is</p>
+    		<p><div class="prompt">No, that's not right. The correct answer is:</div></p>
     		{{> explanation}}
     	{{/if}}
     {{/if}}
