@@ -25,7 +25,7 @@ var chars = [
 ];
 
 
-// time_levels is an array containing the number of seconds that will
+// 'time_levels' is an array containing the number of seconds that will
 // transpire before a card will be shown again. Each time a card is
 // answered correctly, the length of time before it is shown again will
 // double.
@@ -34,7 +34,7 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 1966080.0, 3932160.0, 7864320.0]
 
 
-// Client code
+
 if (Meteor.isClient) {
 
   // This code configures the Mongol package: http://mongol.meteor.com/
@@ -52,7 +52,6 @@ if (Meteor.isClient) {
     Session.setDefault("date", new Date());
   })
 
-  // Helpers for the body template.
   Template.body.helpers({
     cards: function () {
       // This finds the cards in the Current_deck that have a timestamp earlier 
@@ -70,7 +69,7 @@ if (Meteor.isClient) {
         if (waiting_card.count() > 0) {
           return waiting_card;
         } else {
-          // Otherwise sort the cards in the Current_deck in ascending order 
+          // Otherwise, sort the cards in the Current_deck in ascending order 
           // and return the first one.
           return Current_deck.find({}, {sort: {time: 1}, limit: 1});
         }
@@ -78,9 +77,8 @@ if (Meteor.isClient) {
     }
   });
 
-  // Helpers for the card template.
   Template.card.helpers({
-    // Tells the card template is an answer has been submitted.
+    // Tells the card template if an answer has been submitted.
     answered: function() {
       return Session.get('answered');
     },
@@ -88,40 +86,66 @@ if (Meteor.isClient) {
     correct: function() {
       return Session.get('correct');
     },
-    // Tells the card template whether an answer has been submitted, and, if
-    // so, diable the text field so the user can't answer again.
+    // Tells the card template if an answer has been submitted, and, if
+    // so, to disable the text field so the user can't re-answer.
     disabled: function() {
       return Session.get('answered');
     }
   });
 
   Template.card.events({
+    // When hitting the next button after seeing a card for the first time,
     'click #first-time': function () {
+      // update the 'date' variable to the current time,
       Session.set('date', new Date());
+      // set 'seen' to true so next time we know the card has already been
+      // introduced to the user,
       this.seen = true;
+      // set 'time' to now + the first level in the time_levels array 
+      // (multiplied by 1000 to make it into seconds),
       this.time = new Date(+new Date() + time_levels[0]*1000);
+      // insert the card into the Current_deck,
       Current_deck.insert(this);
+      // and, finally, remove it from the Waiting_deck.
       Waiting_deck.remove(this._id);
     },
+    // When hitting the next button after answering a card incorrectly,
     'click #wrong-answer': function() {
+      // update the 'date' variable to the current time,
+      Session.set('date', new Date());
+      // update the timestamp to be the current time + the current 
+      // card's time level value (multiplied by 1000 to make it into seconds)
       Current_deck.update(this._id, {$set: {time: new Date(+new Date() + time_levels[this.level]*1000)}});
+      // and reset the Session's 'answered' state to false (for the next
+      // card)
       Session.set('answered', false);
     },
+    // When submitting an answer,
     'submit .answer': function (event) {
+      // set Session's 'answered' value to true,
       Session.set('answered', true);
+      // and get the user's answer and set it to the variable 'answer'.
       var answer = event.target.text.value;
+      // If the answer is correct,
       if (answer === this.meaning) {
+        // set the Session's correct value to true,
         Session.set('correct', true);
+        // and wait two seconds before 
         Meteor.setTimeout(function(){
+          // updating the 'date' variable to the current time,
+          Session.set('date', new Date());
+          // updating the card's timestamp,
           Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new Date(+new Date() + (time_levels[this.level] + 1)*1000)}});
+          // and setting the Session's 'answered' value to false (for
+          // the next card)
           Session.set('answered', false);
         }.bind(this), 2000);
+      // Otherwise
       } else {
+        // set the Session's 'correct' value to false
         Session.set('correct', false);
-        
-        //event.target.text.value = '';
       }
-      //Session.set('answered', false);
+      // This overrides the default form return function.
       return false;
     }
   });
@@ -135,7 +159,7 @@ if (Meteor.isClient) {
 }
 
 
-// Server code
+
 if (Meteor.isServer) {
 
   Meteor.methods({
@@ -144,7 +168,7 @@ if (Meteor.isServer) {
     // the browser console (alt + cmd + J). 
 
     // The first method fills the Waiting_deck with the cards from the
-    // chars array at the top of this file.
+    // 'chars' array at the top of this file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
       if (Waiting_deck.find().count() === 0) {
@@ -167,7 +191,7 @@ if (Meteor.isServer) {
       Waiting_deck.remove({});
     },
     // The third method calls both previous methods to empty the decks and
-    // then fill the Waiting_deck with the cards from the chars array at 
+    // then fill the Waiting_deck with the cards from the 'chars' array at 
     // the top of this file.
     // To call, type Meteor.call('shuffle_deck'); in the browser console.
     shuffle_deck: function() {
