@@ -3,8 +3,8 @@
 
 // This creates two empty collections.
 // The Waiting_deck collection is for cards that the user has not yet seen,
-// and the Current_deck is for cards the user is currently being tested on.
 Waiting_deck = new Mongo.Collection("waiting_deck");
+// and the Current_deck is for cards the user is currently being tested on.
 Current_deck = new Mongo.Collection("current_deck");
 
 
@@ -50,6 +50,7 @@ if (Meteor.isClient) {
   // determine when cards will be shown again.
   Meteor.startup(function() {
     Session.setDefault("date", new Date());
+    Session.set('answered', false);
   })
 
   Template.body.helpers({
@@ -115,7 +116,8 @@ if (Meteor.isClient) {
       Session.set('date', new Date());
       // update the timestamp to be the current time + the current 
       // card's time level value (multiplied by 1000 to make it into seconds)
-      Current_deck.update(this._id, {$set: {time: new Date(+new Date() + time_levels[this.level]*1000)}});
+      var new_time = new Date(+new Date() + time_levels[this.level]*1000);
+      Current_deck.update(this._id, {$set: {time: new_time}});
       // and reset the Session's 'answered' state to false (for the next
       // card)
       Session.set('answered', false);
@@ -134,8 +136,9 @@ if (Meteor.isClient) {
         Meteor.setTimeout(function(){
           // updating the 'date' variable to the current time,
           Session.set('date', new Date());
-          // updating the card's timestamp,
-          Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new Date(+new Date() + (time_levels[this.level] + 1)*1000)}});
+          // increasing the card's level by one and updating the timestamp,
+          var new_time = new Date(+new Date() + (time_levels[this.level] + 1)*1000);
+          Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new_time}});
           // and setting the Session's 'answered' value to false (for
           // the next card)
           Session.set('answered', false);
