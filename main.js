@@ -37,6 +37,7 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 // Client code
 if (Meteor.isClient) {
 
+  // This code configures the Mongol package: http://mongol.meteor.com/
   Session.set("Mongol", {
     'collections': ['Waiting_deck', 'Current_deck'],
     'display': true,
@@ -45,33 +46,50 @@ if (Meteor.isClient) {
     'disable_warning': 'false'
   });
 
+  // This creates a new date object for the Session that will be used to 
+  // determine when cards will be shown again.
   Meteor.startup(function() {
     Session.setDefault("date", new Date());
   })
 
+  // Helpers for the body template.
   Template.body.helpers({
     cards: function () {
+      // This finds the cards in the Current_deck that have a timestamp earlier 
+      // than now, sorts them in ascending order, takes the first one (if there 
+      // is one), and assigns it to the variable 'current_card'.
       var current_card = Current_deck.find({time: {$lt: Session.get("date")}}, {sort: {time: 1}, limit: 1});
+      // If there was a card with a timestamp earlier than now, return it.
       if (current_card.count() > 0) {
         return current_card;
       } else {
+        // Otherwise, sort the cards in the Waitind_deck in ascending order, take 
+        // the first one, and assign it to the variable 'waiting_card'.
         var waiting_card = Waiting_deck.find({}, {sort: {time: 1}, limit: 1});
+        // If there was a card in the Waiting_deck, return it.
         if (waiting_card.count() > 0) {
           return waiting_card;
         } else {
+          // Otherwise sort the cards in the Current_deck in ascending order 
+          // and return the first one.
           return Current_deck.find({}, {sort: {time: 1}, limit: 1});
         }
       }
     }
   });
 
+  // Helpers for the card template.
   Template.card.helpers({
+    // Tells the card template is an answer has been submitted.
     answered: function() {
       return Session.get('answered');
     },
+    // Tells the card template if the answer submitted was correct.
     correct: function() {
       return Session.get('correct');
     },
+    // Tells the card template whether an answer has been submitted, and, if
+    // so, diable the text field so the user can't answer again.
     disabled: function() {
       return Session.get('answered');
     }
@@ -127,7 +145,7 @@ if (Meteor.isServer) {
 
     // The first method fills the Waiting_deck with the cards from the
     // chars array at the top of this file.
-    // To call type Meteor.call('fill_deck'); in the browser console.
+    // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
       if (Waiting_deck.find().count() === 0) {
         _.each(chars, function (char) {
@@ -143,7 +161,7 @@ if (Meteor.isServer) {
       }
     },
     // The second method empties both decks.
-    // To call type Meteor.call('empty_deck'); in the browser console.
+    // To call, type Meteor.call('empty_deck'); in the browser console.
     empty_deck: function() {
       Current_deck.remove({});
       Waiting_deck.remove({});
@@ -151,7 +169,7 @@ if (Meteor.isServer) {
     // The third method calls both previous methods to empty the decks and
     // then fill the Waiting_deck with the cards from the chars array at 
     // the top of this file.
-    // To call type Meteor.call('shuffle_deck'); in the browser console.
+    // To call, type Meteor.call('shuffle_deck'); in the browser console.
     shuffle_deck: function() {
       Meteor.call('empty_deck');
       Meteor.call('fill_deck');
