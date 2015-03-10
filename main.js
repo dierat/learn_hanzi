@@ -1,5 +1,3 @@
-// To reset the database, type Meteor.call('shuffle_deck'); in the browser console (alt + cmd + J).
-
 
 // This creates two empty collections.
 // The Waiting_deck collection is for cards that the user has not yet seen,
