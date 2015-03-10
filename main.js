@@ -1,4 +1,4 @@
-// To reset the cards, type Meteor.call('shuffle_deck'); in the browser console (ctrl+ alt + J).
+// To reset the database, type Meteor.call('shuffle_deck'); in the browser console (alt + cmd + J).
 
 
 // This creates two empty collections.
@@ -108,7 +108,7 @@ if (Meteor.isClient) {
     }
   });
 
-  // auto-focuses on the next button and input fields
+  // This auto-focuses on the next button and input fields when they appear.
   Template.card.rendered = function () {
     $('.answer input').focus();
     $('.next-button').focus();
@@ -117,13 +117,17 @@ if (Meteor.isClient) {
 }
 
 
-
+// Server code
 if (Meteor.isServer) {
 
   Meteor.methods({
 
     // These three methods allow you to easily reset the database from
-    // the browser console. 
+    // the browser console (alt + cmd + J). 
+
+    // The first method fills the Waiting_deck with the cards from the
+    // chars array at the top of this file.
+    // To call type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
       if (Waiting_deck.find().count() === 0) {
         _.each(chars, function (char) {
@@ -138,10 +142,16 @@ if (Meteor.isServer) {
         });
       }
     },
+    // The second method empties both decks.
+    // To call type Meteor.call('empty_deck'); in the browser console.
     empty_deck: function() {
       Current_deck.remove({});
       Waiting_deck.remove({});
     },
+    // The third method calls both previous methods to empty the decks and
+    // then fill the Waiting_deck with the cards from the chars array at 
+    // the top of this file.
+    // To call type Meteor.call('shuffle_deck'); in the browser console.
     shuffle_deck: function() {
       Meteor.call('empty_deck');
       Meteor.call('fill_deck');
