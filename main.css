@@ -46,7 +46,7 @@ h1 {
 	padding: 20px;
 }
 
-#next-button {
+.next-button {
 	font-size: 18px;
 	font-family: 'Josefin+Sans', sans-serif;
 	font-weight: 700;

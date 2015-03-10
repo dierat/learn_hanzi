@@ -1,10 +1,16 @@
-// to reset the cards, type Meteor.call('shuffle_deck'); in the bowser console (ctrl+ alt + J)
+// To reset the cards, type Meteor.call('shuffle_deck'); in the browser console (ctrl+ alt + J).
 
 
-Current_deck = new Mongo.Collection("current_deck");
+// This creates two empty collections.
+// The Waiting_deck collection is for cards that the user has not yet seen,
+// and the Current_deck is for cards the user is currently being tested on.
 Waiting_deck = new Mongo.Collection("waiting_deck");
+Current_deck = new Mongo.Collection("current_deck");
 
 
+// These are the first ten characters for testing purposes.
+// Database information should follow the format:
+// [ ['question1', 'answer1', 'explanation1'], ['question2', 'answer2', 'explanation2'], etc]
 var chars = [
   ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.'],
   ['亠','lid', '"Lid" is a horizontal line topped with a small vertical line, like a handle on a pot lid.'],
@@ -19,13 +25,16 @@ var chars = [
 ];
 
 
-
+// time_levels is an array containing the number of seconds that will
+// transpire before a card will be shown again. Each time a card is
+// answered correctly, the length of time before it is shown again will
+// double.
 time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 7680.0, 15360.0, 30720.0, 61440.0, 122880.0, 245760.0, 491520.0, 983040.0, 
 1966080.0, 3932160.0, 7864320.0]
 
 
-
+// Client code
 if (Meteor.isClient) {
 
   Session.set("Mongol", {
@@ -99,9 +108,10 @@ if (Meteor.isClient) {
     }
   });
 
+  // auto-focuses on the next button and input fields
   Template.card.rendered = function () {
     $('.answer input').focus();
-    $('#next-button').focus();
+    $('.next-button').focus();
   }
 
 }
@@ -111,6 +121,9 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
 
   Meteor.methods({
+
+    // These three methods allow you to easily reset the database from
+    // the browser console. 
     fill_deck: function () {
       if (Waiting_deck.find().count() === 0) {
         _.each(chars, function (char) {
@@ -125,12 +138,10 @@ if (Meteor.isServer) {
         });
       }
     },
-
     empty_deck: function() {
       Current_deck.remove({});
       Waiting_deck.remove({});
     },
-
     shuffle_deck: function() {
       Meteor.call('empty_deck');
       Meteor.call('fill_deck');
