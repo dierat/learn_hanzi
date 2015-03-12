@@ -1,4 +1,3 @@
-
 // This creates two empty collections.
 // The Waiting_deck collection is for cards that the user has not yet seen,
 Waiting_deck = new Mongo.Collection("waiting_deck");
@@ -44,10 +43,12 @@ if (Meteor.isClient) {
     'disable_warning': 'false'
   });
 
-  // This creates a new date object for the Session that will be used to 
-  // determine when cards will be shown again.
+  
   Meteor.startup(function() {
+    // This creates a new date object for the Session that will be used to 
+    // determine when cards will be shown again.
     Session.setDefault("date", new Date());
+    // And this creates an 'answered' state that is by default set to false.
     Session.set('answered', false);
   })
 
