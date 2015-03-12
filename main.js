@@ -10,15 +10,15 @@ Current_deck = new Mongo.Collection("current_deck");
 // [ ['question1', 'answer1', 'explanation1'], ['question2', 'answer2', 'explanation2'], etc]
 var chars = [
   ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.'],
-  ['亠','lid', '"Lid" is a horizontal line topped with a small vertical line, like a handle on a pot lid.'],
+  ['亠','lid', '"Lid" is a horizontal line topped with a small vertical dash, like a handle on a pot lid.'],
   ['冖','cover', '"Cover is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.'],
-  ['宀','roof', '"Roof" looks like a combination of "lid" (亠) and "cover" (冖), but now the handle stands for the peak of a roof or a chimney and the sides are eaves.'],
-  ['立','stand, erect', 'The character for "to stand" represents a person standing, but that is easier to see in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.'], 
-  ['厂','cliff', '"Cliff" is drawn as a horizontal line with a slightly curves vertical line hanging down from the left, like the edge of a cliff.'], 
-  ['广','house on cliff', 'The character for "house on cliff" looks just like "cliff" (厂) but with a dot on top representing a house.'], 
-  ['疒','sickness', '"Sickness" looks like "house on cliff" () with two additional dashes on the left, but the words have very different meaings and histories. The character for sickenss represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure. '], 
+  ['宀','roof', '"Roof" looks like a combination of "lid" (亠) and "cover" (冖), but now the handle stands for the peak of a roof or a chimney, and the sides are eaves.'],
+  ['立','stand, erect', 'The character for "to stand" represents a person standing, but that is clearer in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.'], 
   ['穴','cave', 'The "cave" character is composed of roof (宀) with two curved horizontal lines on either side representing the walls of the cave.'], 
-  ['人','human, person, people', 'The character for "person" depicts the torso and legs of a person standing or walking. In earlier versions, the person shown also had arms.']
+  ['厂','cliff', '"Cliff" is drawn as a horizontal line with a slightly curved vertical line hanging down from the left, like the edge of a cliff.'], 
+  ['广','house on cliff', 'The character for "house on cliff" looks just like "cliff" (厂) but with a dot on top representing a house.'], 
+  ['疒','sickness', '"Sickness" looks like "house on cliff" (广) with two additional dashes on the left, but the words have very different meaings and histories. The character for sickness represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure. '], 
+  ['石','stone', '"Stone" shows a stone beneath a cliff (厂), though the cliff has become somewhat abstracted and looks a little different than in other characters.']
 ];
 
 
