@@ -1,0 +1,31 @@
+<template name="card">
+
+  <p><div class="character">{{character}}</div></p>
+
+  {{#if seen}}
+  	<p><div class="prompt">Remember this one?</div></p>
+    <p><form class="answer"><input type="text" name="text" autocomplete="off" disabled="{{disabled}}" /></form></p>
+
+    {{#if answered}}
+    	{{#if correct}}
+    		<p><div class="prompt">That's correct!</div></p>
+    	{{else}}
+    		<p><div class="prompt">No, that's not right. The correct answer is:</div></p>
+    		{{> explanation}}
+        <button class="next-button" id="wrong-answer">Got it! Next, please!</button>
+    	{{/if}}
+    {{/if}}
+
+  {{else}}
+    {{> explanation}}
+    <button class="next-button" id="first-time">Got it! Next, please!</button>
+  {{/if}}
+
+</template>
+
+
+
+<template name="explanation">
+    <p><div class="meaning">{{meaning}}</div></p>
+    <p><div class="description">{{description}}</div></p>
+</template>
