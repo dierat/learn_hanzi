@@ -26,6 +26,23 @@
 
 
 <template name="explanation">
-    <p><div class="meaning">{{meaning}}</div></p>
-    <p><div class="description">{{description}}</div></p>
+
+  <p><div class="meaning">{{meaning}}</div></p>
+
+  <p><div class="description">{{description}}</div></p>
+
+  <p><div class="images">
+    {{#each images}}
+      {{> image}}
+    {{/each}}
+  </div></p>
+
+</template>
+
+
+
+<template name="image">
+
+  <img src="{{file_name}}" alt="{{alt}}"/>
+  
 </template>

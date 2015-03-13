@@ -51,7 +51,7 @@ if (Meteor.isClient) {
 
   // This code configures the Mongol package: http://mongol.meteor.com/
   Session.set("Mongol", {
-    'collections': ['Waiting_deck', 'Current_deck'],
+    'collections': ['Waiting_deck', 'Current_deck', 'Images'],
     'display': true,
     'opacity_normal': ".7",
     'opacity_expand': ".9",
