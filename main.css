@@ -67,7 +67,15 @@ h1 {
 }
 
 .images img {
-	max-height: 300px;
-	max-width: 100%; 
+	max-width: 200px;
+	max-height: 100%; 
+	padding-top: 10px;
+}
+
+.subtitle {
+	font-size: 24spx;
+	font-family: 'Roboto Slab', serif;
+	padding: 0px 60px 20px 60px;
+	color: #4F0D00;
 }
 
