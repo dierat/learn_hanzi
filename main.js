@@ -1,14 +1,16 @@
-// This creates two empty collections.
+// This creates three empty collections.
 // The Waiting_deck collection is for cards that the user has not yet seen,
 Waiting_deck = new Mongo.Collection("waiting_deck");
-// and the Current_deck is for cards the user is currently being tested on.
+// the Current_deck is for cards the user is currently being tested on,
 Current_deck = new Mongo.Collection("current_deck");
+// and the Images deck is for illustrations.
+Images = new Mongo.Collection("images");
 
 
 // These are the first ten characters for testing purposes.
 // Database information should follow the format:
 // [ ['question1', 'answer1', 'explanation1'], ['question2', 'answer2', 'explanation2'], etc]
-var chars = [
+chars = [
   ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.'],
   ['亠','lid', '"Lid" is a horizontal line topped with a small vertical dash, like a handle on a pot lid.'],
   ['冖','cover', '"Cover is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.'],
@@ -20,6 +22,19 @@ var chars = [
   ['疒','sickness', '"Sickness" looks like "house on cliff" (广) with two additional dashes on the left, but the words have very different meaings and histories. The character for sickness represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure. '], 
   ['石','stone', '"Stone" shows a stone beneath a cliff (厂), though the cliff has become somewhat abstracted and looks a little different than in other characters.']
 ];
+
+images = {
+  一: ['one_bronze.svg', 'bronze inscription'],
+  亠: ['lid_photo.jpg', 'photo'],
+  冖: ['cover_photo.jpg', 'photo'],
+  宀: ['roof_photo.jpg', 'photo'],
+  立: ['stand_smallseal.svg', 'small seal script'],
+  穴: ['cave_photo.jpg', 'photo'],
+  厂: ['cliff_photo.jpg', 'photo'],
+  广: ['houseoncliff_photo.jpg', 'photo'],
+  疒: ['sickness_oracle.jpg', 'oracle bone script'],
+  石: ['stone_photo.jpg', 'photo']
+};
 
 
 // 'time_levels' is an array containing the number of seconds that will
@@ -173,7 +188,7 @@ if (Meteor.isServer) {
     // 'chars' array at the top of this file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
-      if (Waiting_deck.find().count() === 0) {
+      if (Waiting_deck.find().count() === 0 && Images.find().count() === 0) {
         _.each(chars, function (char) {
           Waiting_deck.insert({
             character: char[0],
@@ -184,13 +199,20 @@ if (Meteor.isServer) {
             level: 0
           });
         });
+        _.each(images, function (image) {
+          Images.insert({
+            file_name: image[0],
+            alt: image[1]
+          })
+        });
       }
     },
-    // The second method empties both decks.
+    // The second method empties all collections.
     // To call, type Meteor.call('empty_deck'); in the browser console.
     empty_deck: function() {
       Current_deck.remove({});
       Waiting_deck.remove({});
+      Images.remove({});
     },
     // The third method calls both previous methods to empty the decks and
     // then fill the Waiting_deck with the cards from the 'chars' array at 
