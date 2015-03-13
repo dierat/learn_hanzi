@@ -66,3 +66,8 @@ h1 {
 	color: #360047;
 }
 
+.images img {
+	max-height: 300px;
+	max-width: 100%; 
+}
+

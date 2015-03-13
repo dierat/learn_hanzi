@@ -19,6 +19,7 @@
   {{else}}
     {{> explanation}}
     <button class="next-button" id="first-time">Got it! Next, please!</button>
+
   {{/if}}
 
 </template>
@@ -31,18 +32,6 @@
 
   <p><div class="description">{{description}}</div></p>
 
-  <p><div class="images">
-    {{#each images}}
-      {{> image}}
-    {{/each}}
-  </div></p>
+  <p><div class="images"><img src="character_images/{{file_name}}" alt="{{alt}}"/></div></p>
 
-</template>
-
-
-
-<template name="image">
-
-  <img src="{{file_name}}" alt="{{alt}}"/>
-  
 </template>

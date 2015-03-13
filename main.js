@@ -3,38 +3,23 @@
 Waiting_deck = new Mongo.Collection("waiting_deck");
 // the Current_deck is for cards the user is currently being tested on,
 Current_deck = new Mongo.Collection("current_deck");
-// and the Images deck is for illustrations.
-Images = new Mongo.Collection("images");
 
 
 // These are the first ten characters for testing purposes.
 // Database information should follow the format:
 // [ ['question1', 'answer1', 'explanation1'], ['question2', 'answer2', 'explanation2'], etc]
 chars = [
-  ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.'],
-  ['亠','lid', '"Lid" is a horizontal line topped with a small vertical dash, like a handle on a pot lid.'],
-  ['冖','cover', '"Cover is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.'],
-  ['宀','roof', '"Roof" looks like a combination of "lid" (亠) and "cover" (冖), but now the handle stands for the peak of a roof or a chimney, and the sides are eaves.'],
-  ['立','stand, erect', 'The character for "to stand" represents a person standing, but that is clearer in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.'], 
-  ['穴','cave', 'The "cave" character is composed of roof (宀) with two curved horizontal lines on either side representing the walls of the cave.'], 
-  ['厂','cliff', '"Cliff" is drawn as a horizontal line with a slightly curved vertical line hanging down from the left, like the edge of a cliff.'], 
-  ['广','house on cliff', 'The character for "house on cliff" looks just like "cliff" (厂) but with a dot on top representing a house.'], 
-  ['疒','sickness', '"Sickness" looks like "house on cliff" (广) with two additional dashes on the left, but the words have very different meaings and histories. The character for sickness represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure. '], 
-  ['石','stone', '"Stone" shows a stone beneath a cliff (厂), though the cliff has become somewhat abstracted and looks a little different than in other characters.']
+  ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.', 'one_bronze.svg', 'bronze inscription'],
+  ['亠','lid', '"Lid" is a horizontal line topped with a small vertical dash, like a handle on a pot lid.', 'lid_photo.jpg', 'photo'],
+  ['冖','cover', '"Cover is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.', 'cover_photo.jpg', 'photo'],
+  ['宀','roof', '"Roof" looks like a combination of "lid" (亠) and "cover" (冖), but now the handle stands for the peak of a roof or a chimney, and the sides are eaves.', 'roof_photo.jpg', 'photo'],
+  ['立','stand, erect', 'The character for "to stand" represents a person standing, but that is clearer in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.', 'stand_smallseal.svg', 'small seal script'], 
+  ['穴','cave', 'The "cave" character is composed of roof (宀) with two curved horizontal lines on either side representing the walls of the cave.', 'cave_photo.jpg', 'photo'], 
+  ['厂','cliff', '"Cliff" is drawn as a horizontal line with a slightly curved vertical line hanging down from the left, like the edge of a cliff.', 'cliff_photo.jpg', 'photo'], 
+  ['广','house on cliff', 'The character for "house on cliff" looks just like "cliff" (厂) but with a dot on top representing a house.', 'houseoncliff_photo.jpg', 'photo'], 
+  ['疒','sickness', '"Sickness" looks like "house on cliff" (广) with two additional dashes on the left, but the words have very different meaings and histories. The character for sickness represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure.', 'sickness_oracle.jpg', 'oracle bone script'], 
+  ['石','stone', '"Stone" shows a stone beneath a cliff (厂), though the cliff has become somewhat abstracted and looks a little different than in other characters.', 'stone_photo.jpg', 'photo']
 ];
-
-images = {
-  一: ['one_bronze.svg', 'bronze inscription'],
-  亠: ['lid_photo.jpg', 'photo'],
-  冖: ['cover_photo.jpg', 'photo'],
-  宀: ['roof_photo.jpg', 'photo'],
-  立: ['stand_smallseal.svg', 'small seal script'],
-  穴: ['cave_photo.jpg', 'photo'],
-  厂: ['cliff_photo.jpg', 'photo'],
-  广: ['houseoncliff_photo.jpg', 'photo'],
-  疒: ['sickness_oracle.jpg', 'oracle bone script'],
-  石: ['stone_photo.jpg', 'photo']
-};
 
 
 // 'time_levels' is an array containing the number of seconds that will
@@ -51,7 +36,7 @@ if (Meteor.isClient) {
 
   // This code configures the Mongol package: http://mongol.meteor.com/
   Session.set("Mongol", {
-    'collections': ['Waiting_deck', 'Current_deck', 'Images'],
+    'collections': ['Waiting_deck', 'Current_deck'],
     'display': true,
     'opacity_normal': ".7",
     'opacity_expand': ".9",
@@ -188,22 +173,18 @@ if (Meteor.isServer) {
     // 'chars' array at the top of this file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
-      if (Waiting_deck.find().count() === 0 && Images.find().count() === 0) {
+      if (Waiting_deck.find().count() === 0) {
         _.each(chars, function (char) {
           Waiting_deck.insert({
             character: char[0],
             meaning: char[1],
             description: char[2],
+            file_name: char[3],
+            alt: char[4],
             time: new Date(),
             seen: false,
             level: 0
           });
-        });
-        _.each(images, function (image) {
-          Images.insert({
-            file_name: image[0],
-            alt: image[1]
-          })
         });
       }
     },
@@ -212,7 +193,6 @@ if (Meteor.isServer) {
     empty_deck: function() {
       Current_deck.remove({});
       Waiting_deck.remove({});
-      Images.remove({});
     },
     // The third method calls both previous methods to empty the decks and
     // then fill the Waiting_deck with the cards from the 'chars' array at 
