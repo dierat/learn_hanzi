@@ -4,6 +4,7 @@ body {
 
 #card {
 	text-align: center;
+	padding: 0 60px 0px 60px;
 }
 
 h1 {
@@ -34,7 +35,7 @@ h1 {
 .description {
 	font-size: 24spx;
 	font-family: 'Roboto Slab', serif;
-	padding: 10px 60px 20px 60px;
+	padding: 10px 0px 20px 0px;
 	color: #4F0D00;
 }
 
@@ -69,7 +70,10 @@ h1 {
 .images img {
 	max-width: 200px;
 	max-height: 100%; 
-	padding-top: 10px;
+}
+
+.images {
+	padding: 10px 0px 10px 0px;
 }
 
 .subtitle {
