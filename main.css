@@ -35,8 +35,10 @@ h1 {
 .description {
 	font-size: 24spx;
 	font-family: 'Roboto Slab', serif;
-	padding: 10px 0px 20px 0px;
+	padding: 10px 60px 20px 60px;
 	color: #4F0D00;
+	max-width: 600px;
+	margin: auto;
 }
 
 .prompt {
@@ -73,7 +75,7 @@ h1 {
 }
 
 .images {
-	padding: 10px 0px 10px 0px;
+	padding: 10px 20px 10px 20px;
 }
 
 .subtitle {
@@ -82,4 +84,6 @@ h1 {
 	padding: 0px 60px 20px 60px;
 	color: #4F0D00;
 }
+
+
 
