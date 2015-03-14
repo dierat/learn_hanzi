@@ -123,32 +123,35 @@ if (Meteor.isClient) {
     },
     // When submitting an answer,
     'submit .answer': function (event) {
-      // set Session's 'answered' value to true,
-      Session.set('answered', true);
-      // and get the user's answer and set it to the variable 'answer'.
+      // Get the user's answer and set it to the variable 'answer',
       var answer = event.target.text.value;
-      // If the answer is correct,
-      if (answer === this.meaning) {
-        // set the Session's correct value to true,
-        Session.set('correct', true);
-        // and wait two seconds before 
-        Meteor.setTimeout(function(){
-          // updating the 'date' variable to the current time,
-          Session.set('date', new Date());
-          // increasing the card's level by one and updating the timestamp,
-          var new_time = new Date(+new Date() + (time_levels[this.level] + 1)*1000);
-          Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new_time}});
-          // and setting the Session's 'answered' value to false (for
-          // the next card)
-          Session.set('answered', false);
-        }.bind(this), 2000);
-      // Otherwise
-      } else {
-        // set the Session's 'correct' value to false
-        Session.set('correct', false);
+      // and make sure something was submitted before continuing.
+      if (answer.length > 0) {
+        // Set Session's 'answered' value to true,
+        Session.set('answered', true);
+        // If the answer is correct,
+        if (answer === this.meaning) {
+          // set the Session's correct value to true,
+          Session.set('correct', true);
+          // and wait two seconds before 
+          Meteor.setTimeout(function(){
+            // updating the 'date' variable to the current time,
+            Session.set('date', new Date());
+            // increasing the card's level by one and updating the timestamp,
+            var new_time = new Date(+new Date() + (time_levels[this.level] + 1)*1000);
+            Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new_time}});
+            // and setting the Session's 'answered' value to false (for
+            // the next card)
+            Session.set('answered', false);
+          }.bind(this), 2000);
+        // Otherwise
+        } else {
+          // set the Session's 'correct' value to false
+          Session.set('correct', false);
+        }
+        // This overrides the default form return function.
+        return false;
       }
-      // This overrides the default form return function.
-      return false;
     }
   });
 
