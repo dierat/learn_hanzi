@@ -130,7 +130,7 @@ if (Meteor.isClient) {
         // Set Session's 'answered' value to true,
         Session.set('answered', true);
         // If the answer is correct,
-        if (answer === this.meaning) {
+        if (answer.toLowerCase() === this.meaning) {
           // set the Session's correct value to true,
           Session.set('correct', true);
           // and wait two seconds before 
