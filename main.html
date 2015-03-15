@@ -4,20 +4,46 @@
   <title>Learn Hanzi!</title>
 </head>
 
+
 <body>
 	<div class="container">
 
 		<header>
       <div id="header">
 			 <h1>Learn Hanzi!</h1>
-       {{> loginButtons}}
+       {{#if currentUser}}
+        {{> loginButtons}}
+       {{/if}}
 		  </div>
     </header>
 
-    <div id="card">
-		  {{#each cards}}
-			 {{> card}}
-		  {{/each}}
-    </div>
+    {{#if currentUser}}
+
+      <div id="card">
+		    {{#each cards}}
+			   {{> card}}
+		    {{/each}}
+      </div>
+
+    {{else}}
+
+      {{> login_page}}
+
+    {{/if}}
+
 	</div>
 </body>
+
+
+
+<template name="login_page">
+  <div id="login-page">
+
+    <div class="prompt">
+      Please create an account or sign in!
+    </div>
+    {{> loginButtons}}
+
+  </div>
+</template>
+

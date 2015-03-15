@@ -2,6 +2,10 @@ body {
 	background-color: #FFF6E0;
 }
 
+#login-page {
+	text-align: center;
+}
+
 #card {
 	text-align: center;
 	padding: 0 60px 0px 60px;
