@@ -208,4 +208,13 @@ if (Meteor.isServer) {
 
   });
 
+  Accounts.onCreateUser(function(options, user) {
+    // Duplicate deck collections for the user
+
+    // Default profile creation behavior
+    if (options.profile)
+      user.profile = options.profile;
+    return user;
+  });
+
 }
