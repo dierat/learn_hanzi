@@ -17,19 +17,22 @@
 		  </div>
     </header>
 
-    {{#if currentUser}}
+    <div id="body">
 
-      <div id="card">
-		    {{#each cards}}
-			   {{> card}}
-		    {{/each}}
-      </div>
+      {{#if currentUser}}
 
-    {{else}}
+        <div id="card">
+		      {{#each cards}}
+			     {{> card}}
+		      {{/each}}
+        </div>
 
-      {{> login_page}}
+      {{else}}
 
-    {{/if}}
+        {{> login_page}}
+
+      {{/if}}
+    </div>
 
 	</div>
 </body>

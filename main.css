@@ -1,7 +1,19 @@
+#header {
+	background-color: #F7FFFF;
+	position: fixed;
+	width: 100%;
+}
+
 body {
-	/* background-color: #FFF6E0; */
 	background: url("design/paper2.jpg");
+	background-color: #FFF6E0;
 	background-size: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+#body {
+	padding-top: 150px;
 }
 
 #login-page {
@@ -18,6 +30,7 @@ h1 {
 	font-size: 40px;
 	font-family: 'Oleo Script', cursive;
 	color: #93131D;
+	margin: 10px;
 }
 
 .character {
