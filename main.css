@@ -2,6 +2,7 @@
 	background-color: #F7FFFF;
 	position: fixed;
 	width: 100%;
+	box-shadow: 2px 2px 2px #888888;
 }
 
 body {
