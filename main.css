@@ -1,5 +1,7 @@
 body {
-	background-color: #FFF6E0;
+	/* background-color: #FFF6E0; */
+	background: url("design/paper2.jpg");
+	background-size: 100%;
 }
 
 #login-page {
