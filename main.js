@@ -153,6 +153,7 @@ if (Meteor.isClient) {
         return false;
       }
     }
+
   });
 
   // This auto-focuses on the next button and input fields when they appear.
@@ -161,6 +162,11 @@ if (Meteor.isClient) {
     $('.next-button').focus();
     $(document).scrollTop( $("#header").offset().top );
   };
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+  });
+  
 }
 
 
