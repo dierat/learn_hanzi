@@ -8,6 +8,5 @@ meteor-platform
 autopublish
 insecure
 msavin:mongol
-accounts-google
 accounts-ui
 accounts-password
