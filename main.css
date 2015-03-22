@@ -5,6 +5,10 @@
 	box-shadow: 1px 1px 2px #888888;
 }
 
+#header-login {
+	text-align: right;
+}
+
 body {
 	background: url("design/paper2.jpg");
 	background-color: #FFF6E0;
