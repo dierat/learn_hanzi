@@ -167,6 +167,10 @@ if (Meteor.isClient) {
     passwordSignupFields: "USERNAME_ONLY"
   });
   
+  Template.loginButtons.rendered = function() {
+    Accounts._loginButtonsSession.set('dropdownVisible', true);
+  };
+
 }
 
 

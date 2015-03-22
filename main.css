@@ -21,6 +21,10 @@ body {
 	text-align: center;
 }
 
+#main-login {
+	margin-right: 190px;
+}
+
 #card {
 	text-align: center;
 	padding: 0 60px 0px 60px;
