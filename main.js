@@ -163,10 +163,12 @@ if (Meteor.isClient) {
     $(document).scrollTop( $("#header").offset().top );
   };
 
+  // Login requires username instead of e-mail address for easier testing.
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
   
+  // Renders the login panel as uncollapsed on login_page template.
   Template.login_page.rendered = function() {
     Accounts._loginButtonsSession.set('dropdownVisible', true);
   };
