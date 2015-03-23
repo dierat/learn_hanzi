@@ -3,7 +3,7 @@
 Waiting_deck = new Mongo.Collection("waiting_deck");
 // the Current_deck is for cards the user is currently being tested on,
 Current_deck = new Mongo.Collection("current_deck");
-// and the users' decks.
+// and the users' decks to store the information on who will see what when.
 Users_decks = new Mongo.Collection("users_decks");
 
 
