@@ -39,7 +39,7 @@ if (Meteor.isClient) {
 
   // This code configures the Mongol package: http://mongol.meteor.com/
   Session.set("Mongol", {
-    'collections': ['Waiting_deck', 'Current_deck'],
+    'collections': ['Waiting_deck', 'Current_deck', 'Users_decks'],
     'display': true,
     'opacity_normal': ".7",
     'opacity_expand': ".9",
@@ -224,8 +224,10 @@ if (Meteor.isServer) {
   });
 
   Accounts.onCreateUser(function(options, user) {
-    // Duplicate deck collections for the user
-
+    Users_decks.insert({
+      userid: Meteor.userid,
+      next_new_card: 0
+    });
     // Default profile creation behavior
     if (options.profile)
       user.profile = options.profile;
