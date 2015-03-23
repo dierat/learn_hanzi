@@ -1,9 +1,7 @@
-// This creates three empty collections.
-// The Waiting_deck collection is for cards that the user has not yet seen,
+// This creates two empty collections.
+// The Main_deck collection stores all the cards,
 Main_deck = new Mongo.Collection("main_deck");
-// the Current_deck is for cards the user is currently being tested on,
-Current_deck = new Mongo.Collection("current_deck");
-// and the users' decks to store the information on who will see what when.
+// and the Users_deck remembers who will see what when.
 Users_deck = new Mongo.Collection("users_deck");
 
 
@@ -47,17 +45,17 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     cards: function () {
-      var current_deck_num = Current_deck.find().count();
       // This finds the cards in the Current_deck that have a timestamp earlier 
       // than now, sorts them in ascending order, takes the first one (if there 
       // is one), and assigns it to the variable 'current_card'.
-      var current_card = Current_deck.find({time: {$lt: Session.get("date")}}, {sort: {time: 1}, limit: 1});
+      var current_card = Users_deck.find({time: {$lt: Session.get("date")}}, {sort: {time: 1}, limit: 1});
       // If there was a card with a timestamp earlier than now, return it.
       if (current_card.count() > 0) {
         return current_card;
       } else {
-        // Otherwise, sort the cards in the Waitind_deck in ascending order, take 
-        // the first one, and assign it to the variable 'waiting_card'.
+        // Finds number of cards currently in play,
+        var current_deck_num = Users_deck.find().count();
+        // then gets the next card from the Main_deck.
         var waiting_card = Main_deck.find({order: current_deck_num});
         // If there was a card in the Waiting_deck, return it.
         if (waiting_card.count() > 0) {
@@ -65,7 +63,7 @@ if (Meteor.isClient) {
         } else {
           // Otherwise, sort the cards in the Current_deck in ascending order 
           // and return the first one.
-          return Current_deck.find({}, {sort: {time: 1}, limit: 1});
+          return Users_deck.find({}, {sort: {time: 1}, limit: 1});
         }
       }
     }
@@ -99,7 +97,7 @@ if (Meteor.isClient) {
       // (multiplied by 1000 to make it into seconds),
       this.time = new Date(+new Date() + time_levels[0]*1000);
       // insert the card into the Current_deck,
-      Current_deck.insert(this);
+      Users_deck.insert(this);
       // and, finally, remove it from the Waiting_deck.
       Main_deck.remove(this._id);
     },
@@ -110,7 +108,7 @@ if (Meteor.isClient) {
       // update the timestamp to be the current time + the current 
       // card's time level value (multiplied by 1000 to make it into seconds)
       var new_time = new Date(+new Date() + time_levels[this.level]*1000);
-      Current_deck.update(this._id, {$set: {time: new_time}});
+      Users_deck.update(this._id, {$set: {time: new_time}});
       // and reset the Session's 'answered' state to false (for the next
       // card)
       Session.set('answered', false);
@@ -133,7 +131,7 @@ if (Meteor.isClient) {
             Session.set('date', new Date());
             // increasing the card's level by one and updating the timestamp,
             var new_time = new Date(+new Date() + (time_levels[this.level] + 1)*1000);
-            Current_deck.update(this._id, {$inc: {level: 1}, $set: {time: new_time}});
+            Users_deck.update(this._id, {$inc: {level: 1}, $set: {time: new_time}});
             // and setting the Session's 'answered' value to false (for
             // the next card)
             Session.set('answered', false);
@@ -202,7 +200,6 @@ if (Meteor.isServer) {
     // The second method empties all collections.
     // To call, type Meteor.call('empty_deck'); in the browser console.
     empty_deck: function() {
-      Current_deck.remove({});
       Main_deck.remove({});
       Users_deck.remove({});
     },
