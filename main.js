@@ -4,7 +4,7 @@ Main_deck = new Mongo.Collection("main_deck");
 // the Current_deck is for cards the user is currently being tested on,
 Current_deck = new Mongo.Collection("current_deck");
 // and the users' decks to store the information on who will see what when.
-Users_decks = new Mongo.Collection("users_decks");
+Users_deck = new Mongo.Collection("users_deck");
 
 
 
@@ -47,6 +47,7 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     cards: function () {
+      var current_deck_num = Current_deck.find().count();
       // This finds the cards in the Current_deck that have a timestamp earlier 
       // than now, sorts them in ascending order, takes the first one (if there 
       // is one), and assigns it to the variable 'current_card'.
@@ -202,6 +203,7 @@ if (Meteor.isServer) {
     empty_deck: function() {
       Current_deck.remove({});
       Main_deck.remove({});
+      Users_deck.remove({});
     },
     // The third method calls both previous methods to empty the decks and
     // then fill the Waiting_deck with the cards from the 'chars' array at 
