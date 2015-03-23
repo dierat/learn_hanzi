@@ -214,15 +214,4 @@ if (Meteor.isServer) {
 
   });
 
-  Accounts.onCreateUser(function(options, user) {
-    Users_decks.insert({
-      userid: Meteor.userid,
-      next_new_card: 0
-    });
-    // Default profile creation behavior
-    if (options.profile)
-      user.profile = options.profile;
-    return user;
-  });
-
 }
