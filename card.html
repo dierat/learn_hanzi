@@ -8,7 +8,7 @@
 
     {{#if answered}}
     	{{#if correct}}
-    		<p><div class="prompt">That's correct!</div></p>
+    		<p><h1>That's correct!</h1></p>
     	{{else}}
     		<p><div class="prompt">No, that's not right. The correct answer is:</div></p>
     		{{> explanation}}
@@ -31,7 +31,7 @@
 
   <p><div class="meaning">{{meaning}}</div></p>
 
-  <p><div class="description">{{description}}</div></p>
+  <p><div class="prompt">{{description}}</div></p>
 
   <p><div class="images">
     <img src="character_images/{{file_name}}" alt="{{alt}}"/>
