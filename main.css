@@ -19,7 +19,7 @@ body {
 }
 
 #body {
-	padding-top: 150px;
+	padding-top: 125px;
 }
 
 #login-page {
@@ -62,7 +62,7 @@ h1 {
 }
 
 .description {
-	font-size: 24spx;
+	font-size: 20px;
 	font-family: 'Open Sans', sans-serif;
 	padding: 10px 60px 20px 60px;
 	color: #4F0D00;
@@ -87,6 +87,7 @@ h1 {
 	width: 200px;
 	background-color: #F7FFFF;
 	color: #93131D;
+	margin-bottom: 50px;
 }
 
 .answer input {
@@ -105,13 +106,6 @@ h1 {
 
 .images {
 	padding: 10px 20px 10px 20px;
-}
-
-.subtitle {
-	font-size: 24spx;
-	font-family: 'Roboto Slab', serif;
-	padding: 0px 60px 20px 60px;
-	color: #4F0D00;
 }
 
 
