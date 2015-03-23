@@ -45,7 +45,7 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     cards: function () {
-      // This finds the cards in the Current_deck that have a timestamp earlier 
+      // This finds the cards in the Users_deck that have a timestamp earlier 
       // than now, sorts them in ascending order, takes the first one (if there 
       // is one), and assigns it to the variable 'current_card'.
       var current_card = Users_deck.find({time: {$lt: Session.get("date")}}, {sort: {time: 1}, limit: 1});
@@ -54,14 +54,14 @@ if (Meteor.isClient) {
         return current_card;
       } else {
         // Finds number of cards currently in play,
-        var current_deck_num = Users_deck.find().count();
+        var users_deck_num = Users_deck.find().count();
         // then gets the next card from the Main_deck.
-        var waiting_card = Main_deck.find({order: current_deck_num});
-        // If there was a card in the Waiting_deck, return it.
+        var waiting_card = Main_deck.find({order: users_deck_num});
+        // If there was a card in the Main_deck, return it.
         if (waiting_card.count() > 0) {
           return waiting_card;
         } else {
-          // Otherwise, sort the cards in the Current_deck in ascending order 
+          // Otherwise, sort the cards in the Users_deck in ascending order 
           // and return the first one.
           return Users_deck.find({}, {sort: {time: 1}, limit: 1});
         }
@@ -96,10 +96,8 @@ if (Meteor.isClient) {
       // set 'time' to now + the first level in the time_levels array 
       // (multiplied by 1000 to make it into seconds),
       this.time = new Date(+new Date() + time_levels[0]*1000);
-      // insert the card into the Current_deck,
+      // and insert the card into the Users_deck.
       Users_deck.insert(this);
-      // and, finally, remove it from the Waiting_deck.
-      Main_deck.remove(this._id);
     },
     // When hitting the next button after answering a card incorrectly,
     'click #wrong-answer': function() {
@@ -177,7 +175,7 @@ if (Meteor.isServer) {
     // These three methods allow you to easily reset the database from
     // the browser console (alt + cmd + J). 
 
-    // The first method fills the Waiting_deck with the cards from the
+    // The first method fills the Main_deck with the cards from the
     // 'chars' array at the top of this file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
@@ -197,14 +195,14 @@ if (Meteor.isServer) {
         });
       }
     },
-    // The second method empties all collections.
+    // The second method empties both decks.
     // To call, type Meteor.call('empty_deck'); in the browser console.
     empty_deck: function() {
       Main_deck.remove({});
       Users_deck.remove({});
     },
     // The third method calls both previous methods to empty the decks and
-    // then fill the Waiting_deck with the cards from the 'chars' array at 
+    // then fill the Main_deck with the cards from the 'chars' array at 
     // the top of this file.
     // To call, type Meteor.call('shuffle_deck'); in the browser console.
     shuffle_deck: function() {
