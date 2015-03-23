@@ -1,6 +1,6 @@
 // This creates three empty collections.
 // The Waiting_deck collection is for cards that the user has not yet seen,
-Waiting_deck = new Mongo.Collection("waiting_deck");
+Main_deck = new Mongo.Collection("main_deck");
 // the Current_deck is for cards the user is currently being tested on,
 Current_deck = new Mongo.Collection("current_deck");
 // and the users' decks to store the information on who will see what when.
@@ -57,7 +57,7 @@ if (Meteor.isClient) {
       } else {
         // Otherwise, sort the cards in the Waitind_deck in ascending order, take 
         // the first one, and assign it to the variable 'waiting_card'.
-        var waiting_card = Waiting_deck.find({}, {sort: {time: 1}, limit: 1});
+        var waiting_card = Main_deck.find({}, {sort: {time: 1}, limit: 1});
         // If there was a card in the Waiting_deck, return it.
         if (waiting_card.count() > 0) {
           return waiting_card;
@@ -100,7 +100,7 @@ if (Meteor.isClient) {
       // insert the card into the Current_deck,
       Current_deck.insert(this);
       // and, finally, remove it from the Waiting_deck.
-      Waiting_deck.remove(this._id);
+      Main_deck.remove(this._id);
     },
     // When hitting the next button after answering a card incorrectly,
     'click #wrong-answer': function() {
@@ -182,9 +182,9 @@ if (Meteor.isServer) {
     // 'chars' array at the top of this file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
-      if (Waiting_deck.find().count() === 0) {
+      if (Main_deck.find().count() === 0) {
         _.each(chars, function (char) {
-          Waiting_deck.insert({
+          Main_deck.insert({
             character: char[0],
             meaning: char[1],
             description: char[2],
@@ -201,7 +201,7 @@ if (Meteor.isServer) {
     // To call, type Meteor.call('empty_deck'); in the browser console.
     empty_deck: function() {
       Current_deck.remove({});
-      Waiting_deck.remove({});
+      Main_deck.remove({});
     },
     // The third method calls both previous methods to empty the decks and
     // then fill the Waiting_deck with the cards from the 'chars' array at 
