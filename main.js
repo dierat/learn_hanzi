@@ -149,10 +149,11 @@ if (Meteor.isClient) {
 
   });
 
-  // This auto-focuses on the next button and input fields when they appear.
   Template.card.rendered = function () {
+     // These auto-focus on the next button and input fields when they appear,
     $('.answer input').focus();
     $('.next-button').focus();
+    // and this resets the scroll to the top of the body div when the template refreshes.
     $(document).scrollTop( $("#body").offset().top );
   };
 
