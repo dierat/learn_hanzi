@@ -14,7 +14,7 @@ Users_deck = new Mongo.Collection("users_deck");
 chars = [
   ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.', 'one_bronze.svg', 'bronze inscription', 0],
   ['亠','lid', '"Lid" is a horizontal line topped with a small vertical dash, like a handle on a pot lid.', 'lid_photo.jpg', 'photo', 1],
-  ['冖','cover', '"Cover is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.', 'cover_photo.jpg', 'photo', 2],
+  ['冖','cover', '"Cover" is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.', 'cover_photo.jpg', 'photo', 2],
   ['宀','roof', '"Roof" looks like a combination of "lid" (亠) and "cover" (冖), but now the handle stands for the peak of a roof or a chimney, and the sides are eaves.', 'roof_photo.jpg', 'photo', 3],
   ['立','stand', 'The character for "to stand" represents a person standing, but that is clearer in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.', 'stand_smallseal.svg', 'small seal script', 4], 
   ['穴','cave', 'The "cave" character is composed of roof (宀) with two curved horizontal lines on either side representing the walls of the cave.', 'cave_photo.jpg', 'photo', 5], 
@@ -58,7 +58,7 @@ if (Meteor.isClient) {
       } else {
         // Otherwise, sort the cards in the Waitind_deck in ascending order, take 
         // the first one, and assign it to the variable 'waiting_card'.
-        var waiting_card = Main_deck.find({}, {sort: {time: 1}, limit: 1});
+        var waiting_card = Main_deck.find({order: current_deck_num});
         // If there was a card in the Waiting_deck, return it.
         if (waiting_card.count() > 0) {
           return waiting_card;
