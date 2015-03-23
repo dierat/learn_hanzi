@@ -3,6 +3,9 @@
 Waiting_deck = new Mongo.Collection("waiting_deck");
 // the Current_deck is for cards the user is currently being tested on,
 Current_deck = new Mongo.Collection("current_deck");
+// and the users' decks.
+Users_decks = new Mongo.Collection("users_decks");
+
 
 
 // These are the first ten characters for testing purposes.
