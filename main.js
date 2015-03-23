@@ -36,16 +36,6 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 
 
 if (Meteor.isClient) {
-
-  // This code configures the Mongol package: http://mongol.meteor.com/
-  Session.set("Mongol", {
-    'collections': ['Waiting_deck', 'Current_deck', 'Users_decks'],
-    'display': true,
-    'opacity_normal': ".7",
-    'opacity_expand': ".9",
-    'disable_warning': 'false'
-  });
-
   
   Meteor.startup(function() {
     // This creates a new date object for the Session that will be used to 
