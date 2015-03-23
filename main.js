@@ -217,7 +217,8 @@ if (Meteor.isServer) {
   Accounts.onCreateUser(function(options, user) {
     Users_decks.insert({
       userid: Meteor.userid,
-      next_new_card: 0
+      next_new_card: 0,
+      Current_deck: new Mongo.Collection("current_deck")
     });
     // Default profile creation behavior
     if (options.profile)
