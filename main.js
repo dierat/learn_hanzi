@@ -32,6 +32,12 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 1966080.0, 3932160.0, 7864320.0]
 
 
+// Function for getting the reference card for the card being shown.
+function get_ref_card(user, card) {
+  return Users_deck.findOne({user_id: user, card_id: card});
+}
+
+
 
 if (Meteor.isClient) {
   
@@ -48,13 +54,13 @@ if (Meteor.isClient) {
       // This finds the cards in the Users_deck that have a timestamp earlier 
       // than now, sorts them in ascending order, takes the first one (if there 
       // is one), and assigns it to the variable 'current_card'.
-      var current_card = Users_deck.find({time: {$lt: Session.get("date")}}, {sort: {time: 1}, limit: 1});
+      var ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
       // If there was a card with a timestamp earlier than now, return it.
-      if (current_card.count() > 0) {
-        return current_card;
+      if (ref_card) {
+        return Main_deck.find({_id: ref_card.card_id});
       } else {
         // Finds number of cards currently in play,
-        var users_deck_num = Users_deck.find().count();
+        var users_deck_num = Users_deck.find({user_id: Meteor.userId()}).count();
         // then gets the next card from the Main_deck.
         var waiting_card = Main_deck.find({order: users_deck_num});
         // If there was a card in the Main_deck, return it.
@@ -63,13 +69,22 @@ if (Meteor.isClient) {
         } else {
           // Otherwise, sort the cards in the Users_deck in ascending order 
           // and return the first one.
-          return Users_deck.find({}, {sort: {time: 1}, limit: 1});
+          var ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
+          return Main_deck.find({_id: ref_card.card_id});
         }
       }
     }
   });
 
   Template.card.helpers({
+    // Tells the card template if the user has seen this card before.
+    seen: function() {
+      if ( get_ref_card(Meteor.userId(), this._id) ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     // Tells the card template if an answer has been submitted.
     answered: function() {
       return Session.get('answered');
@@ -90,16 +105,15 @@ if (Meteor.isClient) {
     'click #first-time': function () {
       // update the 'date' variable to the current time,
       Session.set('date', new Date());
-      // set 'seen' to true so next time we know the card has already been
-      // introduced to the user,
-      this.seen = true;
-      // set 'time' to now + the first level in the time_levels array 
-      // (multiplied by 1000 to make it into seconds),
-      this.time = new Date(+new Date() + time_levels[0]*1000);
-      // add the user's id to it,
-      this.user_id = Meteor.userId();
-      // and insert the card into the Users_deck.
-      Users_deck.insert(this);
+      // and insert a reference card into the Users_deck that contains
+      // the user's id, the card's id, when the user should see this
+      // card again, and the initial level of 0
+      Users_deck.insert({
+        user_id: Meteor.userId(),
+        card_id: this._id,
+        time: new Date(+new Date() + time_levels[0]*1000),
+        level: 0
+      });
     },
     // When hitting the next button after answering a card incorrectly,
     'click #wrong-answer': function() {
@@ -107,15 +121,16 @@ if (Meteor.isClient) {
       Session.set('date', new Date());
       // update the timestamp to be the current time + the current 
       // card's time level value (multiplied by 1000 to make it into seconds)
-      var new_time = new Date(+new Date() + time_levels[this.level]*1000);
-      Users_deck.update(this._id, {$set: {time: new_time}});
+      var ref_card = get_ref_card(Meteor.userId(), this._id);
+      var new_time = new Date(+new Date() + time_levels[ref_card.level]*1000);
+      Users_deck.update(ref_card._id, {$set: {time: new_time}});
       // and reset the Session's 'answered' state to false (for the next
       // card)
       Session.set('answered', false);
     },
     // When submitting an answer,
     'submit .answer': function (event) {
-      // Get the user's answer and set it to the variable 'answer',
+      // get the user's answer and set it to the variable 'answer',
       var answer = event.target.text.value;
       // and make sure something was submitted before continuing.
       if (answer.length > 0) {
@@ -130,8 +145,9 @@ if (Meteor.isClient) {
             // updating the 'date' variable to the current time,
             Session.set('date', new Date());
             // increasing the card's level by one and updating the timestamp,
-            var new_time = new Date(+new Date() + (time_levels[this.level] + 1)*1000);
-            Users_deck.update(this._id, {$inc: {level: 1}, $set: {time: new_time}});
+            var ref_card = get_ref_card(Meteor.userId(), this._id);
+            var new_time = new Date(+new Date() + (time_levels[ref_card.level] + 1)*1000);
+            Users_deck.update(ref_card._id, {$inc: {level: 1}, $set: {time: new_time}});
             // and setting the Session's 'answered' value to false (for
             // the next card)
             Session.set('answered', false);
@@ -189,11 +205,7 @@ if (Meteor.isServer) {
             description: char[2],
             file_name: char[3],
             alt: char[4],
-            time: new Date(),
-            seen: false,
-            level: 0,
             order: char[5],
-            user_id: null
           });
         });
       }
