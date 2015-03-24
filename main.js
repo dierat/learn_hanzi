@@ -32,20 +32,14 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 1966080.0, 3932160.0, 7864320.0]
 
 
-// Function for getting the reference card for the card being shown.
-function get_ref_card(user, card) {
-  return Users_deck.findOne({user_id: user, card_id: card});
-}
-
-
 
 if (Meteor.isClient) {
   
   Meteor.startup(function() {
-    // This creates a new date object for the Session that will be used to 
-    // determine when cards will be shown again.
+    // Create a new date object for the Session that will help determine 
+    // when cards will be shown again.
     Session.setDefault("date", new Date());
-    // And this creates an 'answered' state that is by default set to false.
+    // Create an 'answered' state that is by default set to false.
     Session.set('answered', false);
   })
 
@@ -79,7 +73,7 @@ if (Meteor.isClient) {
   Template.card.helpers({
     // Tells the card template if the user has seen this card before.
     seen: function() {
-      if ( get_ref_card(Meteor.userId(), this._id) ) {
+      if ( Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id}) ) {
         return true;
       } else {
         return false;
@@ -121,7 +115,7 @@ if (Meteor.isClient) {
       Session.set('date', new Date());
       // update the timestamp to be the current time + the current 
       // card's time level value (multiplied by 1000 to make it into seconds)
-      var ref_card = get_ref_card(Meteor.userId(), this._id);
+      var ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
       var new_time = new Date(+new Date() + time_levels[ref_card.level]*1000);
       Users_deck.update(ref_card._id, {$set: {time: new_time}});
       // and reset the Session's 'answered' state to false (for the next
@@ -145,7 +139,7 @@ if (Meteor.isClient) {
             // updating the 'date' variable to the current time,
             Session.set('date', new Date());
             // increasing the card's level by one and updating the timestamp,
-            var ref_card = get_ref_card(Meteor.userId(), this._id);
+            var ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
             var new_time = new Date(+new Date() + (time_levels[ref_card.level] + 1)*1000);
             Users_deck.update(ref_card._id, {$inc: {level: 1}, $set: {time: new_time}});
             // and setting the Session's 'answered' value to false (for
