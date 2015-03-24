@@ -96,6 +96,8 @@ if (Meteor.isClient) {
       // set 'time' to now + the first level in the time_levels array 
       // (multiplied by 1000 to make it into seconds),
       this.time = new Date(+new Date() + time_levels[0]*1000);
+      // add the user's id to it,
+      this.user_id = Meteor.userId();
       // and insert the card into the Users_deck.
       Users_deck.insert(this);
     },
@@ -190,7 +192,8 @@ if (Meteor.isServer) {
             time: new Date(),
             seen: false,
             level: 0,
-            order: char[5]
+            order: char[5],
+            user_id: null
           });
         });
       }
