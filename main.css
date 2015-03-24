@@ -11,9 +11,10 @@
 }
 
 body {
-	background: url("design/paper2.jpg");
+	background: url(design/paper_repeating.jpg);
+	background-repeat: repeat;
+	background-size: 350px;
 	background-color: #FBF6E0;
-	background-size: 100%;
 	padding: 0px;
 	margin: 0px;
 }
