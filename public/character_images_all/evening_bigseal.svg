@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="300"
+   height="300"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   version="1.0"
+   sodipodi:docbase="/home/yug/Desktop"
+   sodipodi:docname="夕-bigseal.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="266.16365"
+     inkscape:cy="161.99229"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     width="300px"
+     height="300px"
+     inkscape:window-width="742"
+     inkscape:window-height="577"
+     inkscape:window-x="305"
+     inkscape:window-y="25" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#000000"
+       d="M 75.857653,265.25362 C 79.358475,203.49798 99.211089,171.58648 146.02998,137.45086 C 138.03222,103.62006 124.54534,91.028493 104.91098,74.894088 C 88.140868,94.135382 75.174878,112.43228 71.788318,119.04795 C 64.558915,133.17062 55.374081,137.52999 55.473935,126.79114 C 75.556946,59.73207 128.68556,-0.94574096 192.74132,18.778875 C 272.27521,43.269648 253.68519,113.97039 181.13928,153.82158 C 142.31776,176.42033 106.3318,183.56043 85.920758,275.76056 C 82.282623,292.19463 75.857653,285.48631 75.857653,265.25362 z M 124.94597,54.025907 C 145.5977,74.429112 163.40631,98.447921 173.38784,125.42758 C 248.9659,85.286821 205.02777,10.86661 124.94597,54.025907 z "
+       id="path2340"
+       sodipodi:nodetypes="cccscscscccc" />
+  </g>
+</svg>
