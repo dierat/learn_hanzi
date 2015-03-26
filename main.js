@@ -223,7 +223,7 @@ if (Meteor.isServer) {
 
   // Only publish the users' cards to the client
   Meteor.publish('users_deck', function() {
-    return Users.deck.find();
+    return Users.deck.find({user_id: user_id});
   });
 
 }
