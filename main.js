@@ -230,7 +230,7 @@ if (Meteor.isServer) {
 
   // Publish the whole main deck to the client.
   Meteor.publish('main_deck', function() {
-    return Main_deck.find(order: order);
+    return Main_deck.find({order: order});
   });
   // Publish the users' cards to the client based on the user_id on the
   // document.
