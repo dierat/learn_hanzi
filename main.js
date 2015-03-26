@@ -10,16 +10,16 @@ Users_deck = new Mongo.Collection("users_deck");
 // Database information should follow the format:
 // [ ['question1', 'answer1', 'explanation1'], ['question2', 'answer2', 'explanation2'], etc]
 chars = [
-  ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.', 'one_bronze.svg', 'bronze inscription', 0],
-  ['亠','lid', '"Lid" is a horizontal line topped with a small vertical dash, like a handle on a pot lid.', 'lid_photo.jpg', 'photo', 1],
-  ['冖','cover', '"Cover" is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.', 'cover_photo.jpg', 'photo', 2],
-  ['宀','roof', '"Roof" looks like a combination of "lid" (亠) and "cover" (冖), but now the handle stands for the peak of a roof or a chimney, and the sides are eaves.', 'roof_photo.jpg', 'photo', 3],
-  ['立','stand', 'The character for "to stand" represents a person standing, but that is clearer in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.', 'stand_smallseal.svg', 'small seal script', 4], 
-  ['穴','cave', 'The "cave" character is composed of roof (宀) with two curved horizontal lines on either side representing the walls of the cave.', 'cave_photo.jpg', 'photo', 5], 
-  ['厂','cliff', '"Cliff" is drawn as a horizontal line with a slightly curved vertical line hanging down from the left, like the edge of a cliff.', 'cliff_photo.jpg', 'photo', 6], 
-  ['广','house on a cliff', 'The character for "house on cliff" looks just like "cliff" (厂) but with a dot on top representing a house.', 'houseoncliff_photo.jpg', 'photo', 7], 
-  ['疒','sickness', '"Sickness" looks like "house on cliff" (广) with two additional dashes on the left, but the words have very different meaings and histories. The character for sickness represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure.', 'sickness_oracle.jpg', 'oracle bone script', 8], 
-  ['石','stone', '"Stone" shows a stone beneath a cliff (厂), though the cliff has become somewhat abstracted and looks a little different than in other characters.', 'stone_photo.jpg', 'photo', 9]
+  ['一','one', '"One" is represented by a single horizontal line. The first three numbers in Mandarin are written as horizontal tally marks.', 'one.svg', 'bronze inscription', 0],
+  ['亠','lid', '"Lid" is a horizontal line topped with a small vertical dash, like a handle on a pot lid.', 'lid.jpg', 'photo', 1],
+  ['冖','cover', '"Cover" is a horizontal line with two small vertical lines hanging from each side, like a tablecloth covering a table.', 'cover.jpg', 'photo', 2],
+  ['宀','roof', '"Roof" looks like a combination of "lid" (亠) and "cover" (冖), but now the handle stands for the peak of a roof or a chimney, and the sides are eaves.', 'roof.jpg', 'photo', 3],
+  ['立','stand', 'The character for "to stand" represents a person standing, but that is clearer in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.', 'to_stand.svg', 'small seal script', 4], 
+  ['穴','cave', 'The "cave" character is composed of roof (宀) with two curved horizontal lines on either side representing the walls of the cave.', 'cave.jpg', 'photo', 5], 
+  ['厂','cliff', '"Cliff" is drawn as a horizontal line with a slightly curved vertical line hanging down from the left, like the edge of a cliff.', 'cliff.jpg', 'photo', 6], 
+  ['广','house on a cliff', 'The character for "house on cliff" looks just like "cliff" (厂) but with a dot on top representing a house.', 'houseonacliff.jpg', 'photo', 7], 
+  ['疒','sickness', '"Sickness" looks like "house on cliff" (广) with two additional dashes on the left, but the words have very different meaings and histories. The character for sickness represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure.', 'sickness.jpg', 'oracle bone script', 8], 
+  ['石','stone', '"Stone" shows a stone beneath a cliff (厂), though the cliff has become somewhat abstracted and looks a little different than in other characters.', 'stone.jpg', 'photo', 9]
 ];
 
 
