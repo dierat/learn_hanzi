@@ -43,6 +43,8 @@ if (Meteor.isClient) {
     Session.set('answered', false);
   })
 
+  Meteor.subscribe('users_deck', Meteor.userId());
+
   Template.body.helpers({
     cards: function () {
       // This finds the cards in the Users_deck that have a timestamp earlier 
