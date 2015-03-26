@@ -49,7 +49,7 @@ if (Meteor.isClient) {
     cards: function () {
       // This finds the cards in the Users_deck that have a timestamp earlier 
       // than now, sorts them in ascending order, takes the first one (if there 
-      // is one), and assigns it to the variable 'current_card'.
+      // is one), and assigns it to the variable 'ref_card'.
       var ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
       // If there was a card with a timestamp earlier than now, return it.
       if (ref_card) {
