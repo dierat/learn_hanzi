@@ -43,7 +43,12 @@ if (Meteor.isClient) {
     Session.set('answered', false);
   })
 
+  // The client subscribes to the cards in the Users_deck with the 
+  // current user's id,
   Meteor.subscribe('users_deck', Meteor.userId());
+  // and to the card in Main_deck that has an order number equal to the
+  // number of cards in the Users_deck with the current user's id
+  Meteor.subscribe('main_deck', Users_deck.find({user_id: Meteor.userId()}).count());
 
   Template.body.helpers({
     cards: function () {
@@ -225,7 +230,7 @@ if (Meteor.isServer) {
 
   // Publish the whole main deck to the client.
   Meteor.publish('main_deck', function() {
-    return Main_deck.find();
+    return Main_deck.find(order: order);
   });
   // Publish the users' cards to the client based on the user_id on the
   // document.
