@@ -5,6 +5,13 @@ Main_deck = new Mongo.Collection("main_deck");
 Users_deck = new Mongo.Collection("users_deck");
 
 
+Main_deck.allow({
+  insert: function() {
+    return false;
+  }
+});
+
+
 
 // These are the first ten characters for testing purposes.
 // Database information should follow the format:
