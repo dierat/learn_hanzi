@@ -17,7 +17,7 @@ chars = [
   ['立','to stand', 'The character for "to stand" represents a person standing, but that is clearer in earlier versions of the character. The horizontal lines describe the shoulders and the ground, the dash on top is the head, and the two long vertical lines outline the torso. It may be easier, however, to imagine it as a pot or vase standing on a table.', 'to_stand.jpg', 'small seal script', 4], 
   ['穴','cave', 'The "cave" character is composed of roof (宀) with two curved horizontal lines on either side representing the walls of the cave.', 'cave.jpg', 'photo', 5], 
   ['厂','cliff', '"Cliff" is drawn as a horizontal line with a slightly curved vertical line hanging down from the left, like the edge of a cliff.', 'cliff.jpg', 'photo', 6], 
-  ['广','house on a cliff', 'The character for "house on a cliff" looks just like "cliff" (厂) but with a dot on top representing a house.', 'houseonacliff.jpg', 'photo', 7], 
+  ['广','house on a cliff', 'The character for "house on a cliff" looks just like "cliff" (厂) but with a dot on top representing a house.', 'house_on_a_cliff.jpg', 'photo', 7], 
   ['疒','sickness', '"Sickness" looks like "house on cliff" (广) with two additional dashes on the left, but the words have very different meaings and histories. The character for sickness represents a sick person sweating, possibly from a fever. Earlier versions of the character had a stretcher or bed drawn to the left of the figure.', 'sickness.jpg', 'oracle bone script', 8], 
   ['石','stone', '"Stone" shows a stone beneath a cliff (厂), though the cliff has become somewhat abstracted and looks a little different than in other characters.', 'stone.jpg', 'photo', 9]
 ];
@@ -45,7 +45,7 @@ if (Meteor.isClient) {
 
   // The client subscribes to the cards in the Users_deck with the 
   // current user's id,
-  Meteor.subscribe('users_deck', this.userId);
+  Meteor.subscribe('users_deck');
   // and to the card in Main_deck that has an order number equal to the
   // number of cards in the Users_deck with the current user's id
   Meteor.subscribe('main_deck');
