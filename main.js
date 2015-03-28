@@ -204,12 +204,12 @@ if (Meteor.isServer) {
       if (Main_deck.find().count() === 0) {
         _.each(chars, function (char) {
           Main_deck.insert({
-            character: char[0],
-            meaning: char[1],
-            description: char[2],
-            file_name: char[3],
-            alt: char[4],
-            order: char[5],
+            order: char[0],
+            character: char[1],
+            meaning: char[2],
+            alt: char[3],
+            file_name: char[2] + '.' + char[4],
+            description: char[5],
           });
         });
       }
