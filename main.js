@@ -208,7 +208,7 @@ if (Meteor.isServer) {
             character: char[1],
             meaning: char[2],
             alt: char[3],
-            file_name: char[2] + '.' + char[4],
+            file_name: char[4],
             description: char[5],
           });
         });
