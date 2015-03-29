@@ -204,7 +204,7 @@ if (Meteor.isServer) {
       if (Main_deck.find().count() === 0) {
         _.each(chars, function (char) {
           Main_deck.insert({
-            order: char[0],
+            order: parseInt(char[0]),
             character: char[1],
             meaning: char[2],
             alt: char[3],
