@@ -194,11 +194,11 @@ if (Meteor.isServer) {
 
   Meteor.methods({
 
-    // These three methods allow you to easily reset the database from
+    // These methods allow you to easily reset the database from
     // the browser console (alt + cmd + J). 
 
     // The first method fills the Main_deck with the cards from the
-    // 'chars' array at the top of this file.
+    // 'chars' array in the chars.js file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
       if (Main_deck.find().count() === 0) {
