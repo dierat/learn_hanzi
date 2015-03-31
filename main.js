@@ -77,7 +77,9 @@ if (Meteor.isClient) {
           // and return the first one.
           var ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
           console.log('second ref_card = ', ref_card);
-          return Main_deck.find({_id: ref_card.card_id});
+          if (ref_card) {
+            return Main_deck.find({_id: ref_card.card_id});
+          }
         }
       }
     }
