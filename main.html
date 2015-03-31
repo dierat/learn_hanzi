@@ -20,24 +20,29 @@
     </header>
 
     <div id="body">
-
-      {{#if currentUser}}
-
-        <div id="card">
-		      {{#each cards}}
-			     {{> card}}
-		      {{/each}}
-        </div>
-
-      {{else}}
-
-        {{> login_page}}
-
-      {{/if}}
+      {{> quiz}}
     </div>
 
 	</div>
 </body>
+
+
+
+<template name="quiz">
+  {{#if currentUser}}
+
+    <div id="card">
+      {{#each cards}}
+        {{> card}}
+      {{/each}}
+    </div>
+
+  {{else}}
+  
+    {{> login_page}}
+
+  {{/if}}
+</template>
 
 
 
@@ -55,4 +60,3 @@
 
   </div>
 </template>
-
