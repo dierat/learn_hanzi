@@ -60,7 +60,6 @@ if (Meteor.isClient) {
       // than now, sort them in ascending order, take the first one (if there 
       // is one), and assign it to the variable 'ref_card'.
       var ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
-      console.log('first ref_card = ', ref_card);
       // If there was a card with a timestamp earlier than now, return it.
       if (ref_card) {
         return Main_deck.find({_id: ref_card.card_id});
@@ -76,7 +75,6 @@ if (Meteor.isClient) {
           // Otherwise, sort the cards in the Users_deck in ascending order 
           // and return the first one.
           var ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
-          console.log('second ref_card = ', ref_card);
           if (ref_card) {
             return Main_deck.find({_id: ref_card.card_id});
           }
