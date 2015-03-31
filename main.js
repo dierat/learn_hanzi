@@ -75,7 +75,6 @@ if (Meteor.isClient) {
           // Otherwise, sort the cards in the Users_deck in ascending order 
           // and return the first one.
           var ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
-          console.log(ref_card);
           return Main_deck.find({_id: ref_card.card_id});
         }
       }
