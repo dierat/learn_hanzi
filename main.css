@@ -11,15 +11,6 @@ a:hover {
 	color: #BF1715;
 }
 
-#header {
-	background-color: #FAFFFF;
-	position: fixed;
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	box-shadow: 1px 1px 2px #888888;
-}
-
 h1 {
 	font-size: 40px;
 	font-family: 'Oleo Script', cursive;
@@ -32,11 +23,30 @@ h1 {
 	text-align: right;
 	margin: 26px 10px 26px 10px;
 	text-decoration: bold;
-	font-family: 'Josefin Sans', sans-serif;
-	font-weight: 300;
 	font-size: 20px;
 	color: #8C1A24;
 
+}
+
+.big-text {
+	font-size: 34px;
+}
+
+.medium-text {
+	font-size: 20px;
+	padding: 10px;
+}
+
+.small-text {
+	font-size: 14px;
+}
+
+.block-text {
+	display: inline-block;
+	line-height: 120%;
+	text-align: justify;
+	margin: 0 50px 0 50px;
+	max-width: 800px;
 }
 
 body {
@@ -51,65 +61,42 @@ body {
 	/* default text properties */
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
-	color: #250030;
+	color: #320042;
+	text-align: center;
+}
+
+#header {
+	background-color: #FAFFFF;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	box-shadow: 1px 1px 2px #888888;
 }
 
 #body {
-	padding-top: 100px;
-	padding-bottom: 75px;
-}
-
-#login-page {
-	text-align: center;
+	padding-top: 90px;
+	padding-bottom: 60px;
 }
 
 #main-login {
 	margin-right: 190px;
+	margin-top: 20px;
 }
 
 #card {
-	text-align: center;
 	padding: 0 60px 0px 60px;
 }
 
 .character {
 	font-family: Georgia, "Times New Roman", "KaiTi", "楷体", STKaiti, "华文楷体", serif;
 	font-size: 110px;
-	color: #250030;
 	background-color: #FAFFFF;
 	height: 175px;
 	width: 200px;
 	margin: 30px auto;
 	padding-top: 25px;
 	box-shadow: 1px 1px 1px #888888;
-}
-
-.big-text {
-
-}
-
-.medium-text {
-
-}
-
-.small-text {
-
-}
-
-.meaning {
-	font-size: 36px;
-	font-family: 'Josefin Sans', sans-serif;
-	font-weight: 300;
-	color: #250030;
-}
-
-.description {
-	font-size: 20px;
-	font-family: 'Open Sans', sans-serif;
-	padding: 10px 60px 20px 60px;
-	color: #250030;
-	max-width: 600px;
-	margin: auto;
 }
 
 .images img {
@@ -123,17 +110,6 @@ body {
 	padding: 10px 20px 10px 20px;
 }
 
-.prompt {
-	font-size: 20px;
-	font-family: 'Josefin Sans', sans-serif;
-	font-weight: 300;
-	color: #250030;
-	padding: 20px;
-	display: inline-block;
-	line-height: 120%;
-	text-align: justify;
-}
-
 .next-button {
 	font-size: 18px;
 	font-family: 'Josefin+Sans', sans-serif;
@@ -142,31 +118,22 @@ body {
 	height: 40px;
 	width: 200px;
 	background-color: #F7FFFF;
-	color: #93131D;
+	color: #8C1A24;
 	margin-bottom: 50px;
 }
 
 .answer input {
 	font-size: 18px;
 	text-align: center;
-	font-family: 'Josefin Sans', sans-serif;
 	width: 200px;
 	background-color: #FAFFFF;
-	color: #250030;
+	color: #320042;
 	margin-bottom: 20px;
 }
 
-#about {
-	margin: 0 50px 0 50px;
-}
-
-small {
-	text-align: center;
-	font-family: 'Open Sans', sans-serif;
-	color: #250030;
-}
-
 #footer {
+	line-height: 50%;
+	padding: 5px 0 5px 0;
 	position: fixed;
 	background-color: #FAFFFF;
 	width: 100%;

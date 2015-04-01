@@ -3,14 +3,14 @@
   <p><div class="character">{{character}}</div></p>
 
   {{#if seen}}
-  	<p><div class="prompt">Remember this one?</div></p>
+  	<p><div class="medium-text">Remember this one?</div></p>
     <p><form class="answer"><input type="text" name="text" autocomplete="off" disabled="{{disabled}}" /></form></p>
 
     {{#if answered}}
     	{{#if correct}}
     		<p><h1>That's correct!</h1></p>
     	{{else}}
-    		<p><div class="prompt">No, that's not right. The correct answer is:</div></p>
+    		<p><div class="medium-text">No, that's not right. The correct answer is:</div></p>
     		{{> explanation}}
         <button class="next-button" id="wrong-answer">Got it! Next, please!</button>
     	{{/if}}
@@ -29,13 +29,13 @@
 <template name="explanation">
   <div id="explanation">
 
-  <p><div class="meaning">{{meaning}}</div></p>
+  <p><div class="big-text">{{meaning}}</div></p>
 
-  <p><div class="prompt">{{description}}</div></p>
+  <p><div class="medium-text"><div class="block-text">{{description}}</div></div></p>
 
   <p><div class="images">
     <img src="character_images/{{file_name}}" alt="{{alt}}"/>
-    <div class="description">{{alt}} of {{character}}</div>
+    <div class="small-text">{{alt}} of {{character}}</div>
   </div></p>
 
   </div>
