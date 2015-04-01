@@ -4,31 +4,48 @@
   <title>Learn Hanzi!</title>
 </head>
 
-
 <body>
-	<div class="container">
-
-		<header>
-      <div id="header">
-			 <h1>Learn Hanzi!</h1>
-       {{#if currentUser}}
-        <div id="header-login">
-          {{> loginButtons align="right"}}
-        </div>
-       {{/if}}
-		  </div>
-    </header>
-
-    <div id="body">
-      {{> quiz}}
-    </div>
-
-	</div>
 </body>
 
 
 
-<template name="quiz">
+<template name="layout">
+  {{> header}}
+  <div id="body">
+    {{> yield}}
+  </div>
+  {{> footer}}
+</template>
+
+
+
+<template name="header">
+  <header>
+    <div id="header">
+     <h1>Learn Hanzi!</h1>
+     {{#if currentUser}}
+      <div id="header-login">
+        {{> loginButtons align="right"}}
+      </div>
+     {{/if}}
+    </div>
+  </header>
+</template>
+
+
+
+<template name="footer">
+  <footer>
+    <small>
+    <p>© 2015 all rights reserved</p>
+    <p>site made by Diedra Rater with <a href="https://www.meteor.com/">MeteorJS</a></p>
+    </small>
+  </footer>
+</template>
+
+
+
+<template name="home">
   {{#if currentUser}}
 
     <div id="card">
