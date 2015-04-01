@@ -158,7 +158,7 @@ if (Meteor.isClient) {
             // and setting the Session's 'answered' value to false (for
             // the next card)
             Session.set('answered', false);
-          }.bind(this), 2000);
+          }.bind(this), 1250);
         // Otherwise
         } else {
           // set the Session's 'correct' value to false
