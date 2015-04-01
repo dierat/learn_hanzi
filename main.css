@@ -12,12 +12,18 @@ h1 {
 	font-size: 40px;
 	font-family: 'Oleo Script', cursive;
 	color: #93131D;
-	margin: 10px;
+	margin: 10px 20px 10px 20px;
 }
 
 #header-login {
 	text-align: right;
-	margin: 26px;
+	margin: 26px 20px 26px 20px;
+	text-decoration: bold;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	color: #360047;
+
 }
 
 body {
