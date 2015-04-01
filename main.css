@@ -47,6 +47,9 @@ body {
 	padding: 0px;
 	margin: 0px;
 	height: 100%;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 300;
+	color: #250030;
 }
 
 #body {
@@ -76,6 +79,18 @@ body {
 	margin: 30px auto;
 	padding-top: 25px;
 	box-shadow: 1px 1px 1px #888888;
+}
+
+.big-text {
+
+}
+
+.medium-text {
+
+}
+
+.small-text {
+
 }
 
 .meaning {
@@ -138,9 +153,14 @@ body {
 	margin-bottom: 20px;
 }
 
+#about {
+	margin: 0 50px 0 50px;
+}
+
 small {
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
+	color: #250030;
 }
 
 #footer {
