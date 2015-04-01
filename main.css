@@ -21,16 +21,16 @@ a:hover {
 }
 
 h1 {
-	text-align: center;
 	font-size: 40px;
 	font-family: 'Oleo Script', cursive;
 	color: #BF1715;
 	margin: 10px 20px 10px 20px;
+	white-space: nowrap;
 }
 
 .header-link {
 	text-align: right;
-	margin: 26px 20px 26px 20px;
+	margin: 26px 10px 26px 10px;
 	text-decoration: bold;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
@@ -106,7 +106,7 @@ body {
 }
 
 .prompt {
-	font-size: 22px;
+	font-size: 20px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
 	color: #250030;
@@ -120,7 +120,7 @@ body {
 	font-size: 18px;
 	font-family: 'Josefin+Sans', sans-serif;
 	font-weight: 700;
-	border-radius: 5px;
+	border-radius: 3px;
 	height: 40px;
 	width: 200px;
 	background-color: #F7FFFF;
@@ -149,4 +149,5 @@ small {
 	width: 100%;
 	bottom: 0;
 	left: 0;
+	box-shadow: 1px -0.5px 2px #888888;
 }
