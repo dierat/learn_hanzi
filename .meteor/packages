@@ -9,3 +9,4 @@ insecure
 msavin:mongol
 accounts-password
 accounts-ui
+iron:router

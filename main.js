@@ -34,6 +34,21 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0,
 1966080.0, 3932160.0, 7864320.0]
 
 
+Router.route('/', function() {
+  this.render('home');
+});
+
+
+Router.route('about', function() {
+  this.render('about');
+});
+
+
+Router.configure({
+  layoutTemplate: 'layout'
+});
+
+
 
 if (Meteor.isClient) {
   
