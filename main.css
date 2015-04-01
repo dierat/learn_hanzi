@@ -1,3 +1,16 @@
+a:link {
+    text-decoration: none;
+    color: #8C1A24;
+}
+
+a:visited {
+    color: #8C1A24;
+}
+
+a:hover {
+	color: #BF1715;
+}
+
 #header {
 	background-color: #FAFFFF;
 	position: fixed;
@@ -11,18 +24,18 @@ h1 {
 	text-align: center;
 	font-size: 40px;
 	font-family: 'Oleo Script', cursive;
-	color: #93131D;
+	color: #BF1715;
 	margin: 10px 20px 10px 20px;
 }
 
-#header-login {
+.header-link {
 	text-align: right;
 	margin: 26px 20px 26px 20px;
 	text-decoration: bold;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
 	font-size: 20px;
-	color: #360047;
+	color: #8C1A24;
 
 }
 
@@ -33,10 +46,12 @@ body {
 	background-color: #FBF6E0;
 	padding: 0px;
 	margin: 0px;
+	height: 100%;
 }
 
 #body {
-	padding-top: 125px;
+	padding-top: 100px;
+	padding-bottom: 75px;
 }
 
 #login-page {
@@ -54,7 +69,7 @@ body {
 
 .character {
 	font-size: 96px;
-	color: #360047;
+	color: #250030;
 	background-color: #FAFFFF;
 	height: 175px;
 	width: 200px;
@@ -67,14 +82,14 @@ body {
 	font-size: 36px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
-	color: #360047;
+	color: #250030;
 }
 
 .description {
 	font-size: 20px;
 	font-family: 'Open Sans', sans-serif;
 	padding: 10px 60px 20px 60px;
-	color: #4F0D00;
+	color: #250030;
 	max-width: 600px;
 	margin: auto;
 }
@@ -94,7 +109,7 @@ body {
 	font-size: 22px;
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
-	color: #360047;
+	color: #250030;
 	padding: 20px;
 	display: inline-block;
 	line-height: 120%;
@@ -119,6 +134,19 @@ body {
 	font-family: 'Josefin Sans', sans-serif;
 	width: 200px;
 	background-color: #FAFFFF;
-	color: #360047;
+	color: #250030;
 	margin-bottom: 20px;
+}
+
+small {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#footer {
+	position: fixed;
+	background-color: #FAFFFF;
+	width: 100%;
+	bottom: 0;
+	left: 0;
 }

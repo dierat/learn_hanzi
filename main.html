@@ -22,10 +22,13 @@
 <template name="header">
   <header>
     <div id="header">
-     <h1>Learn Hanzi!</h1>
+     <a href="/"><h1>Learn Hanzi!</h1></a>
      {{#if currentUser}}
-      <div id="header-login">
+      <div class="header-link">
         {{> loginButtons align="right"}}
+      </div>
+      <div class="header-link">
+        <a href="/about">about</a>
       </div>
      {{/if}}
     </div>
@@ -36,10 +39,12 @@
 
 <template name="footer">
   <footer>
-    <small>
-    <p>© 2015 all rights reserved</p>
-    <p>site made by Diedra Rater with <a href="https://www.meteor.com/">MeteorJS</a></p>
-    </small>
+    <div id="footer">
+      <small>
+      <p>site made by <a href="https://twitter.com/dierat">Diedra Rater</a> with <a href="https://www.meteor.com/">MeteorJS</a></p>
+      <p>check out the code on <a href="https://github.com/dierat/chinese_quiz_meteor_2">github</a></p>
+      </small>
+    </div>
   </footer>
 </template>
 
