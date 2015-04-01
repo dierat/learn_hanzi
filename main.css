@@ -1,13 +1,23 @@
 #header {
 	background-color: #FAFFFF;
 	position: fixed;
+	display: flex;
+	justify-content: center;
 	width: 100%;
 	box-shadow: 1px 1px 2px #888888;
 }
 
+h1 {
+	text-align: center;
+	font-size: 40px;
+	font-family: 'Oleo Script', cursive;
+	color: #93131D;
+	margin: 10px;
+}
+
 #header-login {
 	text-align: right;
-	margin-right: 25px;
+	margin: 26px;
 }
 
 body {
@@ -36,14 +46,6 @@ body {
 	padding: 0 60px 0px 60px;
 }
 
-h1 {
-	text-align: center;
-	font-size: 40px;
-	font-family: 'Oleo Script', cursive;
-	color: #93131D;
-	margin: 10px;
-}
-
 .character {
 	font-size: 96px;
 	color: #360047;
@@ -69,6 +71,17 @@ h1 {
 	color: #4F0D00;
 	max-width: 600px;
 	margin: auto;
+}
+
+.images img {
+	max-width: 200px;
+	max-height: 100%; 
+	background-color: #FAFFFF;
+	box-shadow: 1px 1px 1px #888888;
+}
+
+.images {
+	padding: 10px 20px 10px 20px;
 }
 
 .prompt {
@@ -100,17 +113,3 @@ h1 {
 	color: #360047;
 	margin-bottom: 20px;
 }
-
-.images img {
-	max-width: 200px;
-	max-height: 100%; 
-	background-color: #FAFFFF;
-	box-shadow: 1px 1px 1px #888888;
-}
-
-.images {
-	padding: 10px 20px 10px 20px;
-}
-
-
-
