@@ -47,6 +47,8 @@ body {
 	padding: 0px;
 	margin: 0px;
 	height: 100%;
+
+	/* default text properties */
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
 	color: #250030;
@@ -71,7 +73,8 @@ body {
 }
 
 .character {
-	font-size: 96px;
+	font-family: Georgia, "Times New Roman", "KaiTi", "楷体", STKaiti, "华文楷体", serif;
+	font-size: 110px;
 	color: #250030;
 	background-color: #FAFFFF;
 	height: 175px;
