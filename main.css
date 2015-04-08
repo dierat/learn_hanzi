@@ -1,14 +1,10 @@
 a:link {
     text-decoration: none;
-    color: #8C1A24;
+    color: #BF1715;
 }
 
 a:visited {
-    color: #8C1A24;
-}
-
-a:hover {
-	color: #BF1715;
+    color: #BF1715;
 }
 
 h1 {
@@ -23,9 +19,8 @@ h1 {
 .header-link {
 	text-align: right;
 	margin: 26px 10px 26px 10px;
-	text-decoration: bold;
 	font-size: 20px;
-	color: #8C1A24;
+	color: #BF1715;;
 
 }
 
