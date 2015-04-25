@@ -30,18 +30,23 @@ h1 {
 
 .medium-text {
 	font-size: 20px;
-	padding: 10px;
 }
 
 .small-text {
 	font-size: 16px;
 }
 
-.block-text {
+.small-block {
 	display: inline-block;
 	line-height: 120%;
 	text-align: justify;
-	margin: 0 50px 0 50px;
+	max-width: 400px;
+}
+
+.big-block {
+	display: inline-block;
+	line-height: 120%;
+	text-align: justify;
 	max-width: 800px;
 }
 
@@ -85,7 +90,13 @@ body {
 }
 
 #card {
-	padding: 0 60px 0px 60px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#question {
+	max-width: 400px;
 }
 
 .character {
@@ -94,14 +105,14 @@ body {
 	background-color: #FAFFFF;
 	height: 175px;
 	width: 200px;
-	margin: 30px auto;
+	margin: 30px;
 	padding-top: 25px;
 	box-shadow: 1px 1px 1px #888888;
 }
 
 .images img {
-	max-width: 200px;
-	max-height: 100%; 
+	max-height: 200px;
+	max-width: 100%; 
 	background-color: #FAFFFF;
 	box-shadow: 1px 1px 1px #888888;
 }
