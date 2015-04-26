@@ -1,9 +1,7 @@
 <template name="card">
 
   <div class="flex-column">
-
     <p><div class="character">{{character}}</div></p>
-
     {{#if seen}}
     	<p><div class="medium-text">Remember this one?</div></p>
       <p><form class="answer"><input type="text" name="text" autocomplete="off" disabled="{{disabled}}" /></form></p>
@@ -21,25 +19,19 @@
     {{else}}
       <p><div class="big-text">{{meaning}}</div></p>
     {{/if}}
-
   </div>
 
-
   <div class="flex-column">
-
     {{#if answered}}
       {{#unless correct}}
     		{{> explanation}}
         <button class="next-button" id="wrong-answer">Got it! Next, please!</button>
     	{{/unless}}
     {{/if}}
-
     {{#unless seen}}
       {{> explanation}}
       <button class="next-button" id="first-time">Got it! Next, please!</button>
-
     {{/unless}}
-
   </div>
 
 </template>
@@ -52,7 +44,6 @@
     <img src="character_images/{{file_name}}" alt="{{alt}}"/>
     <div class="small-text">{{alt}} of {{character}}</div>
   </div></p>
-
   <p><div class="medium-text"><div class="small-block">{{description}}</div></div></p>
 
 </template>
