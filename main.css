@@ -95,8 +95,10 @@ body {
 	justify-content: center;
 }
 
-#question {
-	max-width: 400px;
+.flex-column {
+	min-width: 400px
+	max-width: 800px;
+	margin: 20px 40px;
 }
 
 .character {
@@ -105,7 +107,6 @@ body {
 	background-color: #FAFFFF;
 	height: 175px;
 	width: 200px;
-	margin: 30px;
 	padding-top: 25px;
 	box-shadow: 1px 1px 1px #888888;
 }

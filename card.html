@@ -1,6 +1,6 @@
 <template name="card">
 
-  <div id="question">
+  <div class="flex-column">
 
     <p><div class="character">{{character}}</div></p>
 
@@ -21,7 +21,8 @@
 
   </div>
 
-  <div id="explanation">
+
+  <div class="flex-column">
 
     {{#if answered}}
       {{#unless correct}}
