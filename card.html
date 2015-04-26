@@ -15,8 +15,11 @@
             <div class="medium-text">No, that's not right.</div>
             <div class="medium-text">The correct answer is:</div>
           </p>
+          <p><div class="big-text">{{meaning}}</div></p>
         {{/if}}
       {{/if}}
+    {{else}}
+      <p><div class="big-text">{{meaning}}</div></p>
     {{/if}}
 
   </div>
@@ -45,13 +48,11 @@
 
 <template name="explanation">
 
-  <p><div class="big-text">{{meaning}}</div></p>
-
-  <p><div class="medium-text"><div class="small-block">{{description}}</div></div></p>
-
   <p><div class="images">
     <img src="character_images/{{file_name}}" alt="{{alt}}"/>
     <div class="small-text">{{alt}} of {{character}}</div>
   </div></p>
+
+  <p><div class="medium-text"><div class="small-block">{{description}}</div></div></p>
 
 </template>
