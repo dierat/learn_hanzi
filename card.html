@@ -21,18 +21,22 @@
     {{/if}}
   </div>
 
-  <div class="flex-column">
-    {{#if answered}}
-      {{#unless correct}}
+  
+  {{#if answered}}
+    {{#unless correct}}
+      <div class="flex-column">
     		{{> explanation}}
         <button class="next-button" id="wrong-answer">Got it! Next, please!</button>
-    	{{/unless}}
-    {{/if}}
-    {{#unless seen}}
+      </div>
+  	{{/unless}}
+  {{/if}}
+
+  {{#unless seen}}
+    <div class="flex-column">
       {{> explanation}}
       <button class="next-button" id="first-time">Got it! Next, please!</button>
-    {{/unless}}
-  </div>
+    </div>
+  {{/unless}}
 
 </template>
 

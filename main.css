@@ -60,13 +60,11 @@ html {
 }
 
 body {
-	background: url(design/paper_repeating.jpg);
-	background-repeat: repeat;
-	background-size: 350px;
-	background-color: #FBF6E0;
+
 	padding: 0px;
 	margin: 0 0 75px;
 	height: 100%;
+	background-color: #FAFFFF;
 
 	/* default text properties */
 	font-family: 'Josefin Sans', sans-serif;
@@ -76,11 +74,14 @@ body {
 }
 
 #header {
-	background-color: #FAFFFF;
 	position: fixed;
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	background: url(design/paper_repeating.jpg);
+	background-repeat: repeat;
+	background-size: 350px;
+	background-color: #FBF6E0;
 	box-shadow: 1px 1px 2px #888888;
 }
 
@@ -101,6 +102,12 @@ body {
 
 .flex-column {
 	margin: 0px 20px;
+	padding: 20px;
+	background: url(design/paper_repeating.jpg);
+	background-repeat: repeat;
+	background-size: 350px;
+	background-color: #FBF6E0;
+	box-shadow: 1px 1px 2px #888888;
 }
 
 .character {
@@ -146,7 +153,10 @@ body {
 	line-height: 50%;
 	padding: 5px 0 5px 0;
 	position: absolute;
-	background-color: #FAFFFF;
+	background: url(design/paper_repeating.jpg);
+	background-repeat: repeat;
+	background-size: 350px;
+	background-color: #FBF6E0;
 	width: 100%;
 	height: 65px;
 	bottom: 0;
