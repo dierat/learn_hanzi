@@ -64,16 +64,19 @@ body {
 	padding: 0px;
 	margin: 0 0 75px;
 	height: 100%;
-
+	background: url(design/paper_repeating_yellow_evenlighterstill.jpg);
+	background-repeat: repeat;
+	background-size: 350px;
+	background-color: #FBF6E0;
 	/* default text properties */
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight: 300;
-	color: #FAFFFF;
+	color: #290035;
 	text-align: center;
 }
 
 #header {
-	position: fixed;
+	position: absolute;
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -97,20 +100,13 @@ body {
 }
 
 .flex-column {
-	margin: 20px;
-	padding: 20px 40px;
-	width: 400px;
-	background: url(design/paper_repeating_purple.jpg);
-	background-repeat: repeat;
-	background-size: 350px;
-	background-color: #FBF6E0;
-	box-shadow: 1px 1px 2px #888888;
+	margin: 0 20px;
+	padding: 0 20px;
 }
 
 .character {
 	font-family: Georgia, "Times New Roman", "KaiTi", "楷体", STKaiti, "华文楷体", serif;
 	font-size: 110px;
-	color: #290035;
 	background-color: #FAFFFF;
 	height: 175px;
 	width: 200px;
@@ -132,10 +128,10 @@ body {
 	font-weight: 700;
 	border-radius: 3px;
 	height: 40px;
-	width: 200px;
+	width: 400px;
 	background-color: #FAFFFF;
 	color: #BF1715;
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 .answer input {
@@ -144,7 +140,7 @@ body {
 	width: 200px;
 	background-color: #FAFFFF;	
 	color: #320042;
-	margin: 20px 0;
+	margin: 10px 0 20px 0;
 }
 
 #footer {

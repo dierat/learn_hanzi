@@ -9,9 +9,8 @@
       	{{#if correct}}
       		<p><h1>That's correct!</h1></p>
         {{else}}
-          <p>
-            <div class="medium-text">No, sorry! The correct answer is:</div>
-          </p>
+          <div class="medium-text">No, that's not right.</div>
+          <div class="medium-text">The correct answer is:</div>
           <p><div class="big-text">{{meaning}}</div></p>
         {{/if}}
       {{/if}}
@@ -25,7 +24,7 @@
     {{#unless correct}}
       <div class="flex-column">
     		{{> explanation}}
-        <button class="next-button" id="wrong-answer">Got it! Next, please!</button>
+        <button class="next-button" id="wrong-answer">Got it! Go to the next one, please!</button>
       </div>
   	{{/unless}}
   {{/if}}
