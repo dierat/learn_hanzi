@@ -148,11 +148,15 @@ body {
 	}
 }
 
-.images img {
-	max-height: 200px;
-	max-width: 100%; 
+.images {
 	background-color: #FAFFFF;
 	box-shadow: 1px 1px 1px #888888;
+	padding: 10px 5px 5px 5px;
+}
+
+.images img {
+	max-height: 158px;
+	max-width: 100%; 
 }
 
 @media (max-width: 800px) {
@@ -168,10 +172,16 @@ body {
 	font-weight: 700;
 	border-radius: 3px;
 	height: 40px;
-	max-width: 400px;
+	width: 200px;
 	background-color: #FAFFFF;
 	color: #BF1715;
 	margin-bottom: 40px;
+}
+
+@media (min-width: 800px) {
+	.next-button {
+		width: 400px;
+	}
 }
 
 .answer input {
