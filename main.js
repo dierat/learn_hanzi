@@ -6,9 +6,9 @@ Users_deck = new Mongo.Collection("users_deck");
 
 
 // Disallows insertions into the Main_deck from the client
-Main_deck.allow({
+Main_deck.deny({
   insert: function() {
-    return false;
+    return true;
   }
 });
 
