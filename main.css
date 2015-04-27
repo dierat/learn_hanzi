@@ -39,6 +39,12 @@ h1 {
 	margin-bottom: 10px;
 }
 
+@media (max-width: 800px) {
+	.medium-text {
+		font-size: 16px;
+	}
+}
+
 .small-text {
 	font-size: 16px;
 }
@@ -48,6 +54,12 @@ h1 {
 	line-height: 120%;
 	text-align: justify;
 	max-width: 400px;
+}
+
+@media (max-width: 800px) {
+	.small-block {
+		max-width: 200px;
+	}
 }
 
 .big-block {
@@ -131,7 +143,8 @@ body {
 		font-size: 80px;
 		height: 100px;
 		width: 200px;
-		padding-top: 0px;
+		padding-top: 0;
+		padding-bottom: 5px;
 	}
 }
 
@@ -144,7 +157,8 @@ body {
 
 @media (max-width: 800px) {
 	.images img {
-		max-height: 100px;
+		max-width: 200px;
+		max-height: auto;
 	}
 }
 
