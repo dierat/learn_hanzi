@@ -12,16 +12,20 @@ h1 {
 	font-size: 40px;
 	font-family: 'Oleo Script', cursive;
 	color: #BF1715;
-	margin: 10px 20px 10px 20px;
+	margin: 0;
 	white-space: nowrap;
+}
+
+#header-links {
+	display: flex;
+	margin: 0 10px 10px 10px;
 }
 
 .header-link {
 	text-align: right;
-	margin: 26px 10px 26px 10px;
+	margin: auto 10px auto 10px;
 	font-size: 20px;
 	color: #BF1715;;
-
 }
 
 .big-text {
@@ -49,9 +53,9 @@ h1 {
 .big-block {
 	display: inline-block;
 	line-height: 120%;
-	text-align: justify;
 	max-width: 800px;
-	margin: 0px 40px 20px 40px;
+	text-align: justify;
+	margin: 0 0 75px;
 }
 
 html {
@@ -60,9 +64,7 @@ html {
 }
 
 body {
-
 	padding: 0px;
-	margin: 0 0 75px;
 	height: 100%;
 	background: url(design/paper_repeating_yellow_evenlighterstill.jpg);
 	background-repeat: repeat;
@@ -73,19 +75,28 @@ body {
 	font-weight: 300;
 	color: #290035;
 	text-align: center;
+	margin: 0 0 5px;
 }
 
 #header {
 	position: absolute;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
+	padding: 5px;
 	width: 100%;
 	background-color: #FAFFFF;
 	box-shadow: 1px 1px 2px #888888;
 }
 
 #content {
-	padding-top: 90px;
+	padding-top: 80px;
+}
+
+@media (max-width: 800px) {
+	#content {
+		padding-top: 100px;
+	}
 }
 
 #main-login {
@@ -115,11 +126,26 @@ body {
 	box-shadow: 1px 1px 1px #888888;
 }
 
+@media (max-width: 800px) {
+	.character {
+		font-size: 80px;
+		height: 100px;
+		width: 200px;
+		padding-top: 0px;
+	}
+}
+
 .images img {
 	max-height: 200px;
 	max-width: 100%; 
 	background-color: #FAFFFF;
 	box-shadow: 1px 1px 1px #888888;
+}
+
+@media (max-width: 800px) {
+	.images img {
+		max-height: 100px;
+	}
 }
 
 .next-button {
@@ -128,7 +154,7 @@ body {
 	font-weight: 700;
 	border-radius: 3px;
 	height: 40px;
-	width: 400px;
+	max-width: 400px;
 	background-color: #FAFFFF;
 	color: #BF1715;
 	margin-bottom: 40px;
@@ -144,6 +170,7 @@ body {
 }
 
 #footer {
+	display: block;
 	line-height: 50%;
 	padding: 5px 0 5px 0;
 	position: absolute;

@@ -13,7 +13,6 @@
   <div id="content">
     {{> yield}}
   </div>
-  {{> footer}}
 </template>
 
 
@@ -23,26 +22,17 @@
     <div id="header">
      <a href="/"><h1>Learn Hanzi!</h1></a>
      {{#if currentUser}}
-      <div class="header-link">
-        {{> loginButtons align="right"}}
-      </div>
-      <div class="header-link">
-        <a href="/about">about</a>
+      <div id="header-links">
+        <div class="header-link">
+          {{> loginButtons align="right"}}
+        </div>
+        <div class="header-link">
+          <a href="/about">about</a>
+        </div>
       </div>
      {{/if}}
     </div>
   </header>
-</template>
-
-
-
-<template name="footer">
-  <footer>
-    <div id="footer"><div class="small-text">
-      <p>site made by <a href="https://twitter.com/dierat">Diedra Rater</a> with <a href="https://www.meteor.com/">Meteor</a></p>
-      <p>check out the code on <a href="https://github.com/dierat/learn_hanzi">github</a></p>
-    </div></div>
-  </footer>
 </template>
 
 
