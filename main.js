@@ -23,6 +23,12 @@ Users_deck.allow({
   }
 });
 
+Users_deck.deny({
+  update: function(user_id, doc, fields, modifier) {
+    return _.contains(fields, user_id);
+  }
+});
+
 
 
 // 'time_levels' is an array containing the number of seconds that will transpire before a card will be shown again. Each time a card is answered correctly, the length of time before it is shown again will double.
