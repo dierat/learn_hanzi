@@ -8,5 +8,5 @@ meteor-platform
 insecure
 msavin:mongol
 accounts-password
-accounts-ui
 iron:router
+accounts-ui
