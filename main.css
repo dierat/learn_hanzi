@@ -49,7 +49,7 @@ h1 {
 	font-size: 16px;
 }
 
-.small-block {
+.medium-block {
 	display: inline-block;
 	line-height: 120%;
 	text-align: justify;
@@ -57,9 +57,16 @@ h1 {
 }
 
 @media (max-width: 800px) {
-	.small-block {
+	.medium-block {
 		max-width: 200px;
 	}
+}
+
+.small-block {
+	display: inline-block;
+	line-height: 120%;
+	text-align: justify;
+	max-width: 200px;
 }
 
 .big-block {

@@ -9,8 +9,7 @@
       	{{#if correct}}
       		<p><h1>That's correct!</h1></p>
         {{else}}
-          <div class="medium-text">No, that's not right.</div>
-          <div class="medium-text">The correct answer is:</div>
+          <div class="medium-text"><div class="small-block">No, that's not it. The correct answer is:</div></div>
           <p><div class="big-text">{{meaning}}</div></p>
         {{/if}}
       {{/if}}
@@ -46,6 +45,6 @@
     <img src="character_images/{{file_name}}" alt="{{alt}}"/>
     <div class="small-text">{{alt}} of {{character}}</div>
   </div></p>
-  <p><div class="medium-text"><div class="small-block">{{description}}</div></div></p>
+  <p><div class="medium-text"><div class="medium-block">{{description}}</div></div></p>
 
 </template>
