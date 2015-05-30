@@ -16,7 +16,7 @@ h1 {
 	white-space: nowrap;
 }
 
-#header-links {
+nav {
 	display: flex;
 	margin: 0 10px 10px 10px;
 }
