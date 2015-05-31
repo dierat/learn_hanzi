@@ -119,8 +119,55 @@ body {
 }
 
 #main-login {
-	margin-right: 190px;
 	margin-top: 20px;
+}
+
+#login-sign-in-link {
+	display: none;
+}
+
+.login-close-text {
+	display: none;
+}
+
+label {
+	font-size: 18px;
+	font-family: 'Josefin+Sans', sans-serif;
+	font-weight: 700;
+	border-radius: 3px;
+	color: #BF1715;
+}
+
+#login-username {
+	font-size: 18px;
+	text-align: center;
+	width: 200px;
+	background-color: #FAFFFF;	
+	color: #320042;
+	margin: 10px 0 20px 0;
+}
+
+#login-password {
+	font-size: 18px;
+	text-align: center;
+	width: 200px;
+	background-color: #FAFFFF;	
+	color: #320042;
+	margin: 10px 0 20px 0;
+}
+
+#login-buttons-password {
+	margin: 20px auto 20px auto;
+	padding-top: 7px;
+	font-size: 18px;
+	font-family: 'Josefin+Sans', sans-serif;
+	font-weight: 700;
+	border-radius: 3px;
+	height: 33px;
+	width: 200px;
+	background-color: #FAFFFF;
+	color: #BF1715;
+	box-shadow: 1px 1px 1px #888888;
 }
 
 #card {
