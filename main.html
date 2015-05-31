@@ -21,16 +21,16 @@
   <header>
     <div id="header">
      <a href="/"><h1>Learn Hanzi!</h1></a>
-     {{#if currentUser}}
       <nav>
-        <div class="header-link">
-          {{> loginButtons align="right"}}
-        </div>
         <div class="header-link">
           <a href="/about">about</a>
         </div>
+        {{#if currentUser}}
+          <div class="header-link">
+            {{> loginButtons align="right"}}
+          </div>
+        {{/if}}
       </nav>
-     {{/if}}
     </div>
   </header>
 </template>
