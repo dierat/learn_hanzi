@@ -165,7 +165,7 @@ label {
 	margin-bottom: 10px;
 }
 
-/* 'Sign in' button on main login screen */
+/* 'Sign in' or 'Create account' button on main login screen */
 #login-buttons-password {
 	margin: 20px auto 20px auto;
 	padding-top: 7px;
@@ -178,6 +178,12 @@ label {
 	background-color: #FAFFFF;
 	color: #BF1715;
 	box-shadow: 1px 1px 1px #888888;
+}
+
+/* 'Create account' or 'Sign in' link on main login screen (below button) */
+.additional-link {
+    text-decoration: none;
+    color: #BF1715;
 }
 
 #card {
