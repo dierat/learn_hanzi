@@ -130,6 +130,7 @@ body {
 	display: none;
 }
 
+/* 'Username' and 'Password' on main login screen */
 label {
 	font-size: 18px;
 	font-family: 'Josefin+Sans', sans-serif;
@@ -138,6 +139,7 @@ label {
 	color: #BF1715;
 }
 
+/* username text field on main login screen */
 #login-username {
 	font-size: 18px;
 	text-align: center;
@@ -147,6 +149,7 @@ label {
 	margin: 10px 0 20px 0;
 }
 
+/* password text field on main login screen */
 #login-password {
 	font-size: 18px;
 	text-align: center;
@@ -156,6 +159,7 @@ label {
 	margin: 10px 0 20px 0;
 }
 
+/* 'Sign in' button on main login screen */
 #login-buttons-password {
 	margin: 20px auto 20px auto;
 	padding-top: 7px;
