@@ -122,11 +122,13 @@ body {
 	margin-top: 20px;
 }
 
+/* 'Sign in' dropdown link on main login page */
 #login-sign-in-link {
 	display: none;
 }
 
-.login-close-text {
+/* 'Close' dropdown link on main login page */
+#main-login .login-close-text {
 	display: none;
 }
 
