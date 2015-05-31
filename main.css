@@ -108,14 +108,21 @@ body {
 	box-shadow: 1px 1px 2px #888888;
 }
 
+/* name on login button in header */
+#login-name-link {
+	cursor: pointer;
+}
+
 /* 'Close' link in dropdown login menu */
 .login-close-text {
 	font-size: 16px;
+	cursor: pointer;
 }
 
 /* 'Change password' and 'Sign out' links in dropdown login menu */
 .login-button {
 	font-size: 16px;
+	cursor: pointer;
 }
 
 #content {
@@ -190,12 +197,14 @@ label {
 	background-color: #FAFFFF;
 	color: #BF1715;
 	box-shadow: 1px 1px 1px #888888;
+	cursor: pointer;
 }
 
 /* 'Create account' or 'Sign in' link on main login screen (below button) */
 .additional-link {
     text-decoration: none;
     color: #BF1715;
+    cursor: pointer;
 }
 
 #card {
@@ -249,6 +258,7 @@ label {
 }
 
 .next-button {
+	border: none;
 	font-size: 18px;
 	font-family: 'Josefin+Sans', sans-serif;
 	font-weight: 700;
@@ -258,6 +268,8 @@ label {
 	background-color: #FAFFFF;
 	color: #BF1715;
 	margin-bottom: 40px;
+	box-shadow: 1px 1px 1px #888888;
+	cursor: pointer;
 }
 
 @media (min-width: 800px) {
