@@ -108,6 +108,16 @@ body {
 	box-shadow: 1px 1px 2px #888888;
 }
 
+/* 'Close' link in dropdown login menu */
+.login-close-text {
+	font-size: 16px;
+}
+
+/* 'Change password' and 'Sign out' links in dropdown login menu */
+.login-button {
+	font-size: 16px;
+}
+
 #content {
 	padding-top: 80px;
 }
