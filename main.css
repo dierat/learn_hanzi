@@ -159,6 +159,12 @@ label {
 	margin: 10px 0 20px 0;
 }
 
+/* error message on main login screen */
+.message.error-message {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
 /* 'Sign in' button on main login screen */
 #login-buttons-password {
 	margin: 20px auto 20px auto;
