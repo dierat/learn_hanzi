@@ -18,13 +18,14 @@ h1 {
 
 nav {
 	display: flex;
-	margin: 0 10px 10px 10px;
+	margin: 0 10px 0 10px;
 }
 
 .header-link {
 	text-align: right;
 	margin: auto 10px auto 10px;
 	font-size: 20px;
+	font-weight: 700;
 	color: #BF1715;;
 }
 
@@ -113,15 +114,26 @@ body {
 	cursor: pointer;
 }
 
+/* dropdown login menu from header */
+#login-dropdown-list {
+	position: absolute;
+	background-color: #FAFFFF;
+	padding: 10px;
+	box-shadow: 2px 3px 2px #888888;
+}
+
 /* 'Close' link in dropdown login menu */
 .login-close-text {
-	font-size: 16px;
+	margin-right: 53px;
+	font-size: 12px;
+	font-weight: 400;
 	cursor: pointer;
 }
 
 /* 'Change password' and 'Sign out' links in dropdown login menu */
 .login-button {
 	font-size: 16px;
+	text-align: left;
 	cursor: pointer;
 }
 

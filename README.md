@@ -24,7 +24,6 @@ Meteor.call('shuffle_deck');
 <ul>
 	<li>Add blurb about the app on login page so people know what they're signing up for or rewrite/restyle about page so it's easier to read.</li>
 	<li>Allow visitors to use the quiz without signing up right away (then remove main login page, have the sign-in button visible in the header all the time, and have a banner that shows up at the top of the page suggesting unlogged in users to create an account to save their progress</li>
-	<li>Restyle dropdown login buttons so they don't expand the header.</li>
 	<li>Make quick logo.</li>
 	<li>Add instructions for other people to use this codebase for their own flashcards app, or make an empty version for them to use.</li>
 	<li>Switch to using the papa parse package instead of the python parsing program I wrote.</li>
