@@ -22,9 +22,12 @@ Meteor.call('shuffle_deck');
 
 #Roadmap
 <ul>
-	<li>Add blurb about the app on login page so people know what they're signing up for.</li>
+	<li>Add blurb about the app on login page so people know what they're signing up for or rewrite/restyle about page so it's easier to read.</li>
 	<li>Allow visitors to use the quiz without signing up right away (then remove main login page, have the sign-in button visible in the header all the time, and have a banner that shows up at the top of the page suggesting unlogged in users to create an account to save their progress</li>
 	<li>Restyle dropdown login buttons so they don't expand the header.</li>
+	<li>Make quick logo.</li>
+	<li>Add instructions for other people to use this codebase for their own flashcards app, or make an empty version for them to use.</li>
+	<li>Switch to using the papa parse package instead of the python parsing program I wrote.</li>
 	<li>Record number of correct and incorrect answers for each user for each card to give the users feedback on how well they are doing and also to find out which cards are most confusing for users.</li>
 	<li>Gamify the learning process further by adding points for correct answers to encourage users.</li>
 	<li>Create custom illustrations for the characters to replace found images. These could illustrate the concepts more specifically and also be more visually consistent than the current images.</li>
