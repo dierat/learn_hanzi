@@ -78,6 +78,10 @@ nav {
 	margin: 0 0 75px;
 }
 
+section {
+	margin: 20px 0 20px 0;
+}
+
 html {
 	min-height: 100%;
 	position: relative;
