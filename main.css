@@ -46,7 +46,7 @@ nav {
 	}
 }
 
-.small-text {
+figcaption {
 	font-size: 16px;
 }
 
@@ -255,13 +255,14 @@ label {
 	}
 }
 
-.images {
+figure {
 	background-color: #FAFFFF;
 	box-shadow: 1px 1px 1px #888888;
 	padding: 10px 5px 5px 5px;
+	margin: 0;
 }
 
-.images img {
+figure img {
 	max-height: 158px;
 	max-width: 100%; 
 }
