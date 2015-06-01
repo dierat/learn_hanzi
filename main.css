@@ -114,12 +114,12 @@ body {
 }
 
 /* name on login button in header */
-#login-name-link {
+header #login-name-link {
 	cursor: pointer;
 }
 
 /* dropdown login menu from header */
-#login-dropdown-list {
+header #login-dropdown-list {
 	position: absolute;
 	background-color: #FAFFFF;
 	padding: 10px;
@@ -127,7 +127,7 @@ body {
 }
 
 /* 'Close' link in dropdown login menu */
-.login-close-text {
+header .login-close-text {
 	margin-right: 53px;
 	font-size: 12px;
 	font-weight: 400;
@@ -135,7 +135,7 @@ body {
 }
 
 /* 'Change password' and 'Sign out' links in dropdown login menu */
-.login-button {
+header .login-button {
 	font-size: 16px;
 	text-align: left;
 	cursor: pointer;
@@ -216,6 +216,10 @@ label {
 	cursor: pointer;
 }
 
+#login-buttons-password:hover {
+	background-color: #FFF7F7;
+}
+
 /* 'Create account' or 'Sign in' link on main login screen (below button) */
 .additional-link {
     text-decoration: none;
@@ -287,6 +291,10 @@ figure img {
 	margin-bottom: 40px;
 	box-shadow: 1px 1px 1px #888888;
 	cursor: pointer;
+}
+
+.next-button:hover {
+	background-color: #FFF7F7;
 }
 
 @media (min-width: 800px) {
