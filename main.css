@@ -219,7 +219,7 @@ label {
 	width: 200px;
 	background-color: #FAFFFF;
 	color: #BF1715;
-	box-shadow: 1px 1px 1px #888888;
+	box-shadow: 1px 1px 1px rgba(102, 102, 153, .7);
 	cursor: pointer;
 }
 
@@ -268,7 +268,7 @@ label {
 
 figure {
 	background-color: #FAFFFF;
-	box-shadow: 1px 1px 1px #888888;
+	box-shadow: 1px 1px 1px rgba(102, 102, 153, .7);
 	padding: 10px 5px 5px 5px;
 	margin: 0;
 }
@@ -296,7 +296,7 @@ figure img {
 	background-color: #FAFFFF;
 	color: #BF1715;
 	margin-bottom: 40px;
-	box-shadow: 1px 1px 1px #888888;
+	box-shadow: 1px 1px 1px rgba(102, 102, 153, .7);
 	cursor: pointer;
 }
 
