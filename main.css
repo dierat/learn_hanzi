@@ -190,6 +190,17 @@ label {
 	margin: 10px 0 20px 0;
 }
 
+/* second password text field on main login screen */
+#login-password-again {
+	font-size: 18px;
+	text-align: center;
+	width: 200px;
+	background-color: #FAFFFF;	
+	color: #320042;
+	margin: 10px 0 20px 0;
+
+}
+
 /* error message on main login screen */
 .message.error-message {
 	font-size: 20px;
