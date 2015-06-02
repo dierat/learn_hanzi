@@ -98,7 +98,7 @@ body {
 	margin: 0 0 5px;
 }
 
-#header {
+header {
 	position: absolute;
 	display: flex;
 	flex-wrap: wrap;
