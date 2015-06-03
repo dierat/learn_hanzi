@@ -260,9 +260,9 @@ label {
 
 figure {
 	background-color: #FAFFFF;
-	box-shadow: 1px 1px 1px rgba(102, 102, 153, .7);
 	padding: 10px 5px 5px 5px;
 	margin: 0;
+	box-shadow: 1px 1px 1px rgba(102, 102, 153, .7);
 }
 
 figure img {
@@ -271,8 +271,8 @@ figure img {
 }
 
 @media (max-width: 800px) {
-	.images img {
-		max-width: 200px;
+	figure img {
+		max-width: 190px;
 		max-height: auto;
 	}
 }
