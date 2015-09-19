@@ -3,6 +3,11 @@
 Use the app here: http://learnhanzi.meteor.com/
 
 
+![Learn Hanzi! desktop incorrect answer view](http://i132.photobucket.com/albums/q17/dierat/Screen%20Shot%202015-09-18%20at%206.09.17%20PM.png)
+
+![Learn Hanzi! mobile successful answer view](http://i132.photobucket.com/albums/q17/dierat/Screen%20Shot%202015-09-18%20at%206.10.39%20PM.png)
+
+
 #What is it??
 
 <p>Learn Hanzi is a spaced-repetition flashcards app that is designed to teach you <a href="http://en.wikipedia.org/wiki/Chinese_characters">Chinese characters</a>. It's actually a prototype that I made to help me learn Chinese (and <a href="https://www.meteor.com/">Meteor</a>), but you're welcome to use it too. Currently the app will teach you the 101 most common <a href="http://en.wikipedia.org/wiki/Radical_(Chinese_characters)">Chinese radicals</a> from the 2,000 most common Chinese characters. The source for the list of radicals used can be found on <a href="http://www.hackingchinese.com/kickstart-your-character-learning-with-the-100-most-common-radicals/">Hacking Chinese</a>. (You may notice that the original list contains 100 radicals while this app uses 101 - the extra character is 屮 ("sprout").)</p>
@@ -23,10 +28,12 @@ Meteor.call('shuffle_deck');
 #Roadmap
 <ul>
 	<li>Add blurb about the app on login page so people know what they're signing up for or rewrite/restyle about page so it's easier to read.</li>
-	<li>Allow visitors to use the quiz without signing up right away (then remove main login page, have the sign-in button visible in the header all the time, and have a banner that shows up at the top of the page suggesting unlogged in users to create an account to save their progress</li>
-	<li>Make quick logo.</li>
+	<li>Add quick logo/page icon.</li>
+	<li>Add 'About' to the About page (so users know what page they're on)</li>
+	<li>Resize images and remove unused resources so the page loads faster</li>
 	<li>Add instructions for other people to use this codebase for their own flashcards app, or make an empty version for them to use.</li>
 	<li>Switch to using the papa parse package instead of the python parsing program I wrote.</li>
+	<li>Allow visitors to use the quiz without signing up right away (then remove main login page, have the sign-in button visible in the header all the time, and have a banner that shows up at the top of the page suggesting unlogged in users to create an account to save their progress</li>
 	<li>Record number of correct and incorrect answers for each user for each card to give the users feedback on how well they are doing and also to find out which cards are most confusing for users.</li>
 	<li>Gamify the learning process further by adding points for correct answers to encourage users.</li>
 	<li>Create custom illustrations for the characters to replace found images. These could illustrate the concepts more specifically and also be more visually consistent than the current images.</li>
