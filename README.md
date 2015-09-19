@@ -18,11 +18,25 @@ Use the app here: http://learnhanzi.meteor.com/
 <p>If you have any feedback, suggestions, bug reports, or just general comments that you'd like to send me, you can e-mail me at diedra.rater@gmail.com.</p>
 
 
-#How do I get it running on my machine?
+#How do I get it running on my computer?
 
-To fill the database, open the browser console (ctrl + j) and type: 
+Fork this repository, then clone your fork down onto your machine.
 
-Meteor.call('shuffle_deck'); 
+Navigate to the directory of your clone in your terminal and type
+
+```meteor```
+
+to run the server. Then open your browser at the URL
+
+```localhost:3000```
+
+to see the app.
+
+To fill the database, open the browser console (ctrl + j) while viewing the app and type: 
+
+```Meteor.call('shuffle_deck');```
+
+You can run that command again at any time to reset the database, but it will also reset any the history for any users that have been viewing and answering cards.
 
 
 #Roadmap
