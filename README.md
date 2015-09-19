@@ -39,9 +39,11 @@ To fill the database, open the browser console (ctrl + j) while viewing the app 
 You can run that command again at any time to reset the database, but it will also reset any the history for any users that have been viewing and answering cards.
 
 
+
 #Roadmap
 <ul>
-	<li>Add blurb about the app on login page so people know what they're signing up for or rewrite/restyle about page so it's easier to read.</li>
+	<li>Add blurb about the app on login page so people know what they're signing up for</li>
+	<li>rewrite/restyle about page so it's easier to read.</li>
 	<li>Add quick logo/page icon.</li>
 	<li>Add 'About' to the About page (so users know what page they're on)</li>
 	<li>Resize images and remove unused resources so the page loads faster</li>
