@@ -7,26 +7,18 @@ Users_deck = new Mongo.Collection("users_deck");
 
 // Disallows insertions into the Main_deck from the client
 Main_deck.deny({
-  insert: function() {
-    return true;
-  }
+  insert: ()=> true
 });
 
 
 // Only allows inserting and updating into the Users_deck if the user is altering documents with their own user_id
 Users_deck.allow({
-  insert: function(user_id, doc) {
-    return doc.user_id === user_id;
-  },
-  update: function(user_id, doc, fields, modifier) {
-    return doc.user_id === user_id;
-  }
+  insert: (user_id, doc)=> doc.user_id === user_id,
+  update: (user_id, doc, fields, modifier)=> doc.user_id === user_id
 });
 
 Users_deck.deny({
-  update: function(user_id, doc, fields, modifier) {
-    return _.contains(fields, user_id);
-  }
+  update: (user_id, doc, fields, modifier)=> _.contains(fields, user_id)
 });
 
 
@@ -71,15 +63,15 @@ if (Meteor.isClient) {
       // Update the 'date' variable to the current time.
       Session.set('date', new Date());
       // Find the cards in the Users_deck that have a timestamp earlier than now, sort them in ascending order, take the first one (if there is one), and assign it to the variable 'ref_card'.
-      var ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
+      let ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
       // If there was a card with a timestamp earlier than now, return it.
       if (ref_card) {
         return Main_deck.find({_id: ref_card.card_id});
       } else {
         // Finds number of cards currently in play,
-        var users_deck_num = Users_deck.find({user_id: Meteor.userId()}).count();
+        const users_deck_num = Users_deck.find({user_id: Meteor.userId()}).count();
         // then gets the next card from the Main_deck.
-        var waiting_card = Main_deck.find({order: users_deck_num});
+        const waiting_card = Main_deck.find({order: users_deck_num});
         // If there was a card in the Main_deck, return it.
         if (waiting_card.count() > 0) {
           return waiting_card;
@@ -104,17 +96,11 @@ if (Meteor.isClient) {
       }
     },
     // Tells the card template if an answer has been submitted.
-    answered: function() {
-      return Session.get('answered');
-    },
+    answered: ()=> Session.get('answered'),
     // Tells the card template if the answer submitted was correct.
-    correct: function() {
-      return Session.get('correct');
-    },
+    correct: ()=> Session.get('correct'),
     // Tells the card template if an answer has been submitted, and, if so, to disable the text field so the user can't re-answer.
-    disabled: function() {
-      return Session.get('answered');
-    }
+    disabled: ()=> Session.get('answered')
   });
 
   Template.card.events({
@@ -135,8 +121,8 @@ if (Meteor.isClient) {
       // update the 'date' variable to the current time,
       Session.set('date', new Date());
       // update the timestamp to be the current time + the current card's time level value (multiplied by 1000 to make it into seconds)
-      var ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
-      var new_time = new Date(+new Date() + time_levels[ref_card.level]*1000);
+      const ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
+      const new_time = new Date(+new Date() + time_levels[ref_card.level]*1000);
       Users_deck.update(ref_card._id, {$set: {time: new_time}});
       // and reset the Session's 'answered' state to false (for the next card)
       Session.set('answered', false);
@@ -144,7 +130,7 @@ if (Meteor.isClient) {
     // When submitting an answer,
     'submit .answer': function (event) {
       // get the user's answer and set it to the variable 'answer',
-      var answer = event.target.text.value;
+      const answer = event.target.text.value;
       // and make sure something was submitted before continuing.
       if (answer.length > 0) {
         // Set Session's 'answered' value to true,
@@ -158,8 +144,8 @@ if (Meteor.isClient) {
             // updating the 'date' variable to the current time,
             Session.set('date', new Date());
             // increasing the card's level by one and updating the timestamp,
-            var ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
-            var new_time = new Date(+new Date() + (time_levels[ref_card.level] + 1)*1000);
+            const ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
+            const new_time = new Date(+new Date() + (time_levels[ref_card.level] + 1)*1000);
             Users_deck.update(ref_card._id, {$inc: {level: 1}, $set: {time: new_time}});
             // and setting the Session's 'answered' value to false (for the next card)
             Session.set('answered', false);
@@ -190,7 +176,7 @@ if (Meteor.isClient) {
   });
 
   // Renders the login panel as uncollapsed on login_page template.
-  Template.login_page.rendered = function() {
+  Template.login_page.rendered = ()=> {
     Accounts._loginButtonsSession.set('dropdownVisible', true);
   };
 
@@ -208,7 +194,7 @@ if (Meteor.isServer) {
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
       if (Main_deck.find().count() === 0) {
-        _.each(chars, function (char) {
+        _.each(chars, (char)=> {
           Main_deck.insert({
             order: parseInt(char[0]),
             character: char[1],
@@ -222,13 +208,13 @@ if (Meteor.isServer) {
     },
     // The second method empties both decks.
     // To call, type Meteor.call('empty_deck'); in the browser console.
-    empty_deck: function() {
+    empty_deck: ()=> {
       Main_deck.remove({});
       Users_deck.remove({});
     },
     // The third method calls both previous methods to empty the decks and then fill the Main_deck with the cards from the 'chars' array at the top of this file.
     // To call, type Meteor.call('shuffle_deck'); in the browser console.
-    shuffle_deck: function() {
+    shuffle_deck: ()=> {
       Meteor.call('empty_deck');
       Meteor.call('fill_deck');
     }
@@ -236,9 +222,7 @@ if (Meteor.isServer) {
   });
 
   // Publish the whole main deck to the client.
-  Meteor.publish('main_deck', function() {
-    return Main_deck.find();
-  });
+  Meteor.publish( 'main_deck', ()=> Main_deck.find() );
   // Publish the users' cards to the client based on the user_id on the document.
   Meteor.publish('users_deck', function() {
     return Users_deck.find({user_id: this.userId});
