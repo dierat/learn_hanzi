@@ -158,7 +158,7 @@ if (Meteor.isClient) {
   Template.card.rendered = function () {
     $('.answer input').focus();
     $('.next-button').focus();
-    $(document).scrollTop( $("#body").offset().top );
+    $(document).scrollTop( $("body").offset().top );
   };
 
   // Login requires username instead of e-mail address for easier testing.
