@@ -65,22 +65,18 @@ if (Meteor.isClient) {
       // Find the cards in the Users_deck that have a timestamp earlier than now, sort them in ascending order, take the first one (if there is one), and assign it to the variable 'ref_card'.
       let ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
       // If there was a card with a timestamp earlier than now, return it.
-      if (ref_card) {
-        return Main_deck.find({_id: ref_card.card_id});
-      } else {
+      if (ref_card) return Main_deck.find({_id: ref_card.card_id});
+      else {
         // Finds number of cards currently in play,
         const users_deck_num = Users_deck.find({user_id: Meteor.userId()}).count();
         // then gets the next card from the Main_deck.
         const waiting_card = Main_deck.find({order: users_deck_num});
         // If there was a card in the Main_deck, return it.
-        if (waiting_card.count() > 0) {
-          return waiting_card;
-        } else {
+        if (waiting_card.count() > 0) return waiting_card;
+        else {
           // Otherwise, sort the cards in the Users_deck in ascending order and return the first one.
           ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
-          if (ref_card) {
-            return Main_deck.find({_id: ref_card.card_id});
-          }
+          if (ref_card) return Main_deck.find({_id: ref_card.card_id});
         }
       }
     }
