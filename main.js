@@ -46,11 +46,11 @@ Router.route('about', function() {
 
 if (Meteor.isClient) {
 
-  Meteor.startup(function() {
+  Meteor.startup(()=> {
     // Create a new date object for the Session that will help determine when cards will be shown again.
     Session.setDefault('date', new Date());
     // Create an 'answered' state that is by default set to false.
-    Session.set('answered', false);
+    Session.setDefault('answered', false);
   });
 
   // The client subscribes to the cards in the Users_deck with the current user's id,
