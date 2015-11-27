@@ -72,7 +72,7 @@ if (Meteor.isClient) {
         // then gets the next card from the Main_deck.
         const waiting_card = Main_deck.find({order: users_deck_num});
         // If there was a card in the Main_deck, return it.
-        if (waiting_card.count() > 0) return waiting_card;
+        if (waiting_card.count()) return waiting_card;
         else {
           // Otherwise, sort the cards in the Users_deck in ascending order and return the first one.
           ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
@@ -85,11 +85,7 @@ if (Meteor.isClient) {
   Template.card.helpers({
     // Tells the card template if the user has seen this card before.
     seen: function() {
-      if ( Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id}) ) {
-        return true;
-      } else {
-        return false;
-      }
+      return !!Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
     },
     // Tells the card template if an answer has been submitted.
     answered: ()=> Session.get('answered'),
@@ -128,7 +124,7 @@ if (Meteor.isClient) {
       // get the user's answer and set it to the variable 'answer',
       const answer = event.target.text.value;
       // and make sure something was submitted before continuing.
-      if (answer.length > 0) {
+      if (answer.length) {
         // Set Session's 'answered' value to true,
         Session.set('answered', true);
         // If the answer is correct,
