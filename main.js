@@ -32,7 +32,7 @@ Users_deck.deny({
 
 
 // 'time_levels' is an array containing the number of seconds that will transpire before a card will be shown again. Each time a card is answered correctly, the length of time before it is shown again will double.
-time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0, 7680.0, 15360.0, 30720.0, 61440.0, 122880.0, 245760.0, 491520.0, 983040.0, 1966080.0, 3932160.0, 7864320.0]
+time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0, 7680.0, 15360.0, 30720.0, 61440.0, 122880.0, 245760.0, 491520.0, 983040.0, 1966080.0, 3932160.0, 7864320.0];
 
 
 
@@ -53,13 +53,13 @@ Router.route('about', function() {
 
 
 if (Meteor.isClient) {
-  
+
   Meteor.startup(function() {
     // Create a new date object for the Session that will help determine when cards will be shown again.
     Session.setDefault('date', new Date());
     // Create an 'answered' state that is by default set to false.
     Session.set('answered', false);
-  })
+  });
 
   // The client subscribes to the cards in the Users_deck with the current user's id,
   Meteor.subscribe('users_deck');
@@ -85,7 +85,7 @@ if (Meteor.isClient) {
           return waiting_card;
         } else {
           // Otherwise, sort the cards in the Users_deck in ascending order and return the first one.
-          var ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
+          ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
           if (ref_card) {
             return Main_deck.find({_id: ref_card.card_id});
           }
@@ -153,7 +153,7 @@ if (Meteor.isClient) {
         if (answer.toLowerCase() === this.meaning) {
           // set the Session's correct value to true,
           Session.set('correct', true);
-          // and wait two seconds before 
+          // and wait two seconds before
           Meteor.setTimeout(function(){
             // updating the 'date' variable to the current time,
             Session.set('date', new Date());
@@ -188,7 +188,7 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
-  
+
   // Renders the login panel as uncollapsed on login_page template.
   Template.login_page.rendered = function() {
     Accounts._loginButtonsSession.set('dropdownVisible', true);
@@ -202,7 +202,7 @@ if (Meteor.isServer) {
 
   Meteor.methods({
 
-    // These methods allow you to easily reset the database from the browser console (alt + cmd + J). 
+    // These methods allow you to easily reset the database from the browser console (alt + cmd + J).
 
     // The first method fills the Main_deck with the cards from the 'chars' array in the chars.js file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
