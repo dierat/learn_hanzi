@@ -28,7 +28,6 @@ time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0, 768
 if (Meteor.isClient) {
 
   Meteor.startup(()=> {
-    Session.setDefault('date', new Date());
     Session.setDefault('answered', false);
   });
 
@@ -41,10 +40,10 @@ if (Meteor.isClient) {
 
   Template.home.helpers({
     cards: function () {
-      Session.set('date', new Date());
+      const date = new Date();
       // Find the cards in the Users_deck that have a timestamp earlier than now,
       // sort them in ascending order, and take the first one (if there is one)
-      let ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
+      let ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: date}}, {sort: {time: 1}});
       // If there was a card with a timestamp earlier than now, return it.
       if (ref_card) return Main_deck.find({_id: ref_card.card_id});
       else {
@@ -79,7 +78,6 @@ if (Meteor.isClient) {
   Template.card.events({
     // When hitting the next button after seeing a card for the first time,
     'click #first-time': function () {
-      Session.set('date', new Date());
       // insert a reference card into the Users_deck that contains the user's id,
       // the card's id, when the user should see this card again, and the initial
       // level of 0
@@ -92,7 +90,6 @@ if (Meteor.isClient) {
     },
     // When hitting the next button after answering a card incorrectly,
     'click #wrong-answer': function() {
-      Session.set('date', new Date());
       // update the timestamp to be the current time + the current card's time
       // level value (multiplied by 1000 to make it into seconds)
       const ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
@@ -114,7 +111,6 @@ if (Meteor.isClient) {
           // wait two seconds before
           Meteor.setTimeout(function(){
             // increasing the card's level by one and updating the timestamp,
-            Session.set('date', new Date());
             const ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
             const new_time = new Date(+new Date() + (time_levels[ref_card.level] + 1)*1000);
             Users_deck.update(ref_card._id, {$inc: {level: 1}, $set: {time: new_time}});
