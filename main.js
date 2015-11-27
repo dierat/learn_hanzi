@@ -1,4 +1,3 @@
-// This creates two empty collections.
 // The Main_deck collection stores all the cards,
 Main_deck = new Mongo.Collection("main_deck");
 // and the Users_deck remembers who will see what when.
@@ -11,19 +10,23 @@ Main_deck.deny({
 });
 
 
-// Only allows inserting and updating into the Users_deck if the user is altering documents with their own user_id
+// Only allows inserting and updating into the Users_deck if the user is altering
+// documents with their own user_id
 Users_deck.allow({
   insert: (user_id, doc)=> doc.user_id === user_id,
   update: (user_id, doc, fields, modifier)=> doc.user_id === user_id
 });
 
+// Denies ability to change a document's user id
 Users_deck.deny({
   update: (user_id, doc, fields, modifier)=> _.contains(fields, user_id)
 });
 
 
 
-// 'time_levels' is an array containing the number of seconds that will transpire before a card will be shown again. Each time a card is answered correctly, the length of time before it is shown again will double.
+// 'time_levels' is an array containing the number of seconds that will transpire
+// before a card will be shown again. Each time a card is answered correctly, the
+// length of time before it is shown again will double.
 time_levels = [15.0, 30.0, 60.0, 120.0, 240.0, 480.0, 960.0, 1920.0, 3840.0, 7680.0, 15360.0, 30720.0, 61440.0, 122880.0, 245760.0, 491520.0, 983040.0, 1966080.0, 3932160.0, 7864320.0];
 
 
@@ -47,22 +50,22 @@ Router.route('about', function() {
 if (Meteor.isClient) {
 
   Meteor.startup(()=> {
-    // Create a new date object for the Session that will help determine when cards will be shown again.
     Session.setDefault('date', new Date());
-    // Create an 'answered' state that is by default set to false.
     Session.setDefault('answered', false);
   });
 
-  // The client subscribes to the cards in the Users_deck with the current user's id,
+  // This should be only the cards in the Users_deck with the current user's id,
   Meteor.subscribe('users_deck');
-  // and to the card in Main_deck that has an order number equal to the number of cards in the Users_deck with the current user's id
+  // and this should be the card in Main_deck that has an order number equal to
+  // the number of cards in the Users_deck with the current user's id (ie the
+  // next card the user will learn)
   Meteor.subscribe('main_deck');
 
   Template.home.helpers({
     cards: function () {
-      // Update the 'date' variable to the current time.
       Session.set('date', new Date());
-      // Find the cards in the Users_deck that have a timestamp earlier than now, sort them in ascending order, take the first one (if there is one), and assign it to the variable 'ref_card'.
+      // Find the cards in the Users_deck that have a timestamp earlier than now,
+      // sort them in ascending order, and take the first one (if there is one)
       let ref_card = Users_deck.findOne({user_id: Meteor.userId(), time: {$lt: Session.get("date")}}, {sort: {time: 1}});
       // If there was a card with a timestamp earlier than now, return it.
       if (ref_card) return Main_deck.find({_id: ref_card.card_id});
@@ -74,7 +77,7 @@ if (Meteor.isClient) {
         // If there was a card in the Main_deck, return it.
         if (waiting_card.count()) return waiting_card;
         else {
-          // Otherwise, sort the cards in the Users_deck in ascending order and return the first one.
+          // Otherwise, get the card in the user's card with the oldest timestamp.
           ref_card = Users_deck.findOne({user_id: Meteor.userId()}, {sort: {time: 1}});
           if (ref_card) return Main_deck.find({_id: ref_card.card_id});
         }
@@ -83,24 +86,25 @@ if (Meteor.isClient) {
   });
 
   Template.card.helpers({
-    // Tells the card template if the user has seen this card before.
     seen: function() {
+      // Checks if this card exists in the Users_deck with the current user's
+      // id and turns the result into a boolean
       return !!Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
     },
-    // Tells the card template if an answer has been submitted.
     answered: ()=> Session.get('answered'),
-    // Tells the card template if the answer submitted was correct.
     correct: ()=> Session.get('correct'),
-    // Tells the card template if an answer has been submitted, and, if so, to disable the text field so the user can't re-answer.
+    // Tells the card template if an answer has been submitted, and, if so, to
+    // disable the text field so the user can't re-answer.
     disabled: ()=> Session.get('answered')
   });
 
   Template.card.events({
     // When hitting the next button after seeing a card for the first time,
     'click #first-time': function () {
-      // update the 'date' variable to the current time,
       Session.set('date', new Date());
-      // and insert a reference card into the Users_deck that contains the user's id, the card's id, when the user should see this card again, and the initial level of 0
+      // insert a reference card into the Users_deck that contains the user's id,
+      // the card's id, when the user should see this card again, and the initial
+      // level of 0
       Users_deck.insert({
         user_id: Meteor.userId(),
         card_id: this._id,
@@ -110,9 +114,9 @@ if (Meteor.isClient) {
     },
     // When hitting the next button after answering a card incorrectly,
     'click #wrong-answer': function() {
-      // update the 'date' variable to the current time,
       Session.set('date', new Date());
-      // update the timestamp to be the current time + the current card's time level value (multiplied by 1000 to make it into seconds)
+      // update the timestamp to be the current time + the current card's time
+      // level value (multiplied by 1000 to make it into seconds)
       const ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
       const new_time = new Date(+new Date() + time_levels[ref_card.level]*1000);
       Users_deck.update(ref_card._id, {$set: {time: new_time}});
@@ -121,30 +125,27 @@ if (Meteor.isClient) {
     },
     // When submitting an answer,
     'submit .answer': function (event) {
-      // get the user's answer and set it to the variable 'answer',
+      // get the user's answer
       const answer = event.target.text.value;
       // and make sure something was submitted before continuing.
       if (answer.length) {
-        // Set Session's 'answered' value to true,
         Session.set('answered', true);
         // If the answer is correct,
         if (answer.toLowerCase() === this.meaning) {
-          // set the Session's correct value to true,
           Session.set('correct', true);
-          // and wait two seconds before
+          // wait two seconds before
           Meteor.setTimeout(function(){
-            // updating the 'date' variable to the current time,
-            Session.set('date', new Date());
             // increasing the card's level by one and updating the timestamp,
+            Session.set('date', new Date());
             const ref_card = Users_deck.findOne({user_id: Meteor.userId(), card_id: this._id});
             const new_time = new Date(+new Date() + (time_levels[ref_card.level] + 1)*1000);
             Users_deck.update(ref_card._id, {$inc: {level: 1}, $set: {time: new_time}});
             // and setting the Session's 'answered' value to false (for the next card)
             Session.set('answered', false);
           }.bind(this), 1250);
-        // Otherwise
+        // If the answer was false,
         } else {
-          // set the Session's 'correct' value to false
+          // tell the client that so it can show the correct answer.
           Session.set('correct', false);
         }
         // This overrides the default form return function.
@@ -155,10 +156,8 @@ if (Meteor.isClient) {
   });
 
   Template.card.rendered = function () {
-     // These auto-focus on the next button and input fields when they appear,
     $('.answer input').focus();
     $('.next-button').focus();
-    // and this resets the scroll to the top of the body div when the template refreshes.
     $(document).scrollTop( $("#body").offset().top );
   };
 
@@ -180,9 +179,11 @@ if (Meteor.isServer) {
 
   Meteor.methods({
 
-    // These methods allow you to easily reset the database from the browser console (alt + cmd + J).
+    // These methods allow you to easily reset the database from the browser console
+    // (open it by holding down 'alt', 'cmd', and 'J').
 
-    // The first method fills the Main_deck with the cards from the 'chars' array in the chars.js file.
+    // The first method fills the Main_deck with the cards from the 'chars' array
+    // in the chars.js file.
     // To call, type Meteor.call('fill_deck'); in the browser console.
     fill_deck: function () {
       if (Main_deck.find().count() === 0) {
@@ -204,7 +205,9 @@ if (Meteor.isServer) {
       Main_deck.remove({});
       Users_deck.remove({});
     },
-    // The third method calls both previous methods to empty the decks and then fill the Main_deck with the cards from the 'chars' array at the top of this file.
+    // The third method calls both previous methods to empty the decks and then
+    // fills the Main_deck with the cards from the 'chars' array in the chars.js
+    // file.
     // To call, type Meteor.call('shuffle_deck'); in the browser console.
     shuffle_deck: ()=> {
       Meteor.call('empty_deck');
