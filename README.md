@@ -36,7 +36,7 @@ localhost:3000
 
 to see the app.
 
-To fill the database, open the browser console (ctrl + j) while viewing the app and type: 
+To fill the database, open the browser console (ctrl + j) while viewing the app and type:
 
 ```
 Meteor.call('shuffle_deck');
@@ -48,13 +48,13 @@ You can run that command again at any time to reset the database, but it will al
 
 #Roadmap
 <ul>
+	<li>Add quick logo/page icon.</li>
+	<li>Make the app more mobile-friendly (remove URL address bar on mobile, use service workers so it can be used offline, add app config file so it has a loading screen)</li>
+	<li>Replace the couple of ugly sketch images that are currently being used (cow, clothes, foot, run, and walk)</li>
 	<li>Add blurb about the app on login page so people know what they're signing up for</li>
 	<li>rewrite/restyle about page so it's easier to read.</li>
-	<li>Add quick logo/page icon.</li>
 	<li>Add 'About' to the About page (so users know what page they're on)</li>
-	<li>Resize images and remove unused resources so the page loads faster</li>
-	<li>Add instructions for other people to use this codebase for their own flashcards app, or make an empty version for them to use.</li>
-	<li>Switch to using the papa parse package instead of the python parsing program I wrote.</li>
+	<li>Add instructions for other people to use this codebase for their own flashcards app, or make an empty version for them to use, or turn the spaced-repetition parts into a package.</li>
 	<li>Allow visitors to use the quiz without signing up right away (then remove main login page, have the sign-in button visible in the header all the time, and have a banner that shows up at the top of the page suggesting unlogged in users to create an account to save their progress</li>
 	<li>Record number of correct and incorrect answers for each user for each card to give the users feedback on how well they are doing and also to find out which cards are most confusing for users.</li>
 	<li>Gamify the learning process further by adding points for correct answers to encourage users.</li>
