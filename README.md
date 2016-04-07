@@ -37,7 +37,8 @@ localhost:3000
 
 to see the app.
 
-To fill the database, open the browser console (ctrl + j) while viewing the app and type:
+To fill the database, you will need to uncomment the meteor methods in app/server/meteorMethods.js
+Then open the browser console (ctrl + j) while viewing the app and type:
 
 ```
 Meteor.call('shuffle_deck');
