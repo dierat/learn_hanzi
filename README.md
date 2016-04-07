@@ -1,6 +1,7 @@
 #Learn Hanzi!
 
-Use the app here: http://learnhanzi.meteor.com/
+Learn Hanzi has moved!
+Use the app here: www.learnhanzi.org
 
 
 ![Learn Hanzi! desktop incorrect answer view](http://i132.photobucket.com/albums/q17/dierat/software%20dev%20portfolio%20images/Screen%20Shot%202015-09-18%20at%206.09.17%20PM.png)
