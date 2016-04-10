@@ -50,6 +50,7 @@ You can run that command again at any time to reset the database, but it will al
 
 #Roadmap
 <ul>
+	<li>Figure out learn hanzi DNS redirect from naked domain.</li>
 	<li>Add quick logo/page icon.</li>
 	<li>Make the app more mobile-friendly (remove URL address bar on mobile, use service workers so it can be used offline, add app config file so it has a loading screen)</li>
 	<li>Replace the couple of ugly sketch images that are currently being used (cow, clothes, foot, run, and walk)</li>
