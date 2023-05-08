@@ -1,8 +1,6 @@
-#Learn Hanzi!
+#Learn Hanzi
 
-Learn Hanzi has moved!
-Use the app here: www.learnhanzi.org
-
+This project is no longer being maintained.
 
 ![Learn Hanzi! desktop incorrect answer view](http://i132.photobucket.com/albums/q17/dierat/software%20dev%20portfolio%20images/Screen%20Shot%202015-09-18%20at%206.09.17%20PM.png)
 
@@ -45,22 +43,3 @@ Meteor.call('shuffle_deck');
 ```
 
 You can run that command again at any time to reset the database, but it will also reset any the history for any users that have been viewing and answering cards.
-
-
-
-#Roadmap
-<ul>
-	<li>Figure out learn hanzi DNS redirect from naked domain.</li>
-	<li>Add quick logo/page icon.</li>
-	<li>Make the app more mobile-friendly (remove URL address bar on mobile, use service workers so it can be used offline, add app config file so it has a loading screen)</li>
-	<li>Replace the couple of ugly sketch images that are currently being used (cow, clothes, foot, run, and walk)</li>
-	<li>Add blurb about the app on login page so people know what they're signing up for</li>
-	<li>rewrite/restyle about page so it's easier to read.</li>
-	<li>Add 'About' to the About page (so users know what page they're on)</li>
-	<li>Add instructions for other people to use this codebase for their own flashcards app, or make an empty version for them to use, or turn the spaced-repetition parts into a package.</li>
-	<li>Allow visitors to use the quiz without signing up right away (then remove main login page, have the sign-in button visible in the header all the time, and have a banner that shows up at the top of the page suggesting unlogged in users to create an account to save their progress</li>
-	<li>Record number of correct and incorrect answers for each user for each card to give the users feedback on how well they are doing and also to find out which cards are most confusing for users.</li>
-	<li>Gamify the learning process further by adding points for correct answers to encourage users.</li>
-	<li>Create custom illustrations for the characters to replace found images. These could illustrate the concepts more specifically and also be more visually consistent than the current images.</li>
-	<li>Add more characters, working through the 1,000 most frequently used characters, or crowd source the content for the app from communities that are working on learning the characters already. A form could be make to make the process of adding characters to the database easier, but checking the quality of the content would be difficult.</li>
-</ul>
